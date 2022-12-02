@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed&display=swap");
+
+.spinner {
+  display: flex;
+  height: calc(100vh - 6em);
+  align-items: center;
+  justify-content: center;
+  font-family: "Fira Sans Condensed", sans-serif;
+  flex-direction: column;
+  font-size: 1.5rem;
+  line-height: 1;
+  gap: 8px;
+}
