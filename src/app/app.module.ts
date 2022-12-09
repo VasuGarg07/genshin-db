@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TitlebarModule } from './shared/titlebar/titlebar.module';
+import { HttpClientModule } from '@angular/common/http';
+import { GenshinService } from './services/genshin.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +15,7 @@ import { TitlebarModule } from './shared/titlebar/titlebar.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     TitlebarModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
