@@ -1,0 +1,28 @@
+.glow {
+  flex: 6;
+  transition: all 0.2s linear;
+  cursor: default;
+  line-height: 1;
+  font-weight: bold;
+  font-size: 5rem;
+  text-transform: uppercase;
+  color: #f35626;
+  letter-spacing: 0.1em;
+  font-family: "Aladin", cursive;
+  // text-shadow: 0 0 10px;
+  background-image: linear-gradient(92deg, #f35626, #feab3a);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hue 10s infinite linear;
+  @keyframes hue {
+    from {
+      -webkit-filter: hue-rotate(0deg);
+    }
+    to {
+      -webkit-filter: hue-rotate(-360deg);
+    }
+  }
+  &:hover {
+    text-shadow: none;
+  }
+}

@@ -1,16 +1,16 @@
-<div class="pad-32">
-  <div class="title text-center">Genshin Impact Database</div>
+<div class="pad-32 dashboard flex-column">
+  <app-gradient-title title="Genshin Impact Database"></app-gradient-title>
   <div class="image margin-8 flex-center">
     <img src="/assets/icon.png" alt="">
   </div>
   <div class="nav flex-center">
-    <button class="btn-grad btn-a" routerLink="/characters">Characters</button>
-    <button class="btn-grad btn-b" routerLink="/weapons">Weapons</button>
-    <button class="btn-grad btn-c" routerLink="/artifacts">Artifacts</button>
-    <button class="btn-grad btn-d" routerLink="/materials">Materials</button>
-    <button class="btn-grad btn-e" routerLink="/domains">Domains</button>
-    <button class="btn-grad btn-f" routerLink="/enemies">Enemies</button>
+    <button class="btn-grad btn-a" (click)="navigateTo('/characters')">Characters</button>
+    <button class="btn-grad btn-b" (click)="navigateTo('/weapons')">Weapons</button>
+    <button class="btn-grad btn-c" (click)="navigateTo('/artifacts')">Artifacts</button>
+    <button class="btn-grad btn-d" (click)="navigateTo('/materials')">Materials</button>
+    <button class="btn-grad btn-e" (click)="navigateTo('/domains')">Domains</button>
+    <button class="btn-grad btn-f" (click)="navigateTo('/enemies')">Enemies</button>
     <button class="btn-grad btn-g" routerLink="/areas">Areas</button>
-    <button class="btn-grad btn-h" routerLink="/elements">Elements</button>
+    <!-- <button class="btn-grad btn-h" routerLink="/elements">Elements</button> -->
   </div>
 </div>

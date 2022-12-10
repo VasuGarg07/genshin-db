@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ElementsComponent } from './elements.component';
+import { GradientTitleComponent } from './gradient-title.component';
 
-describe('ElementsComponent', () => {
-  let component: ElementsComponent;
-  let fixture: ComponentFixture<ElementsComponent>;
+describe('GradientTitleComponent', () => {
+  let component: GradientTitleComponent;
+  let fixture: ComponentFixture<GradientTitleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ElementsComponent ]
+      declarations: [ GradientTitleComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ElementsComponent);
+    fixture = TestBed.createComponent(GradientTitleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

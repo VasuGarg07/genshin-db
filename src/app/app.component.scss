@@ -1,8 +1,7 @@
 .container {
   width: 100vw;
   min-height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("/assets/wallpaper.jpg") no-repeat center;
+  background: url("/assets/wallpaper.jpg") no-repeat center;
   background-size: cover;
   background-attachment: fixed;
 }

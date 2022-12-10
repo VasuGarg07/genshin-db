@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TitlebarComponent } from './titlebar.component';
+import { AnimatedTitleComponent } from './animated-title.component';
 
-describe('TitlebarComponent', () => {
-  let component: TitlebarComponent;
-  let fixture: ComponentFixture<TitlebarComponent>;
+describe('AnimatedTitleComponent', () => {
+  let component: AnimatedTitleComponent;
+  let fixture: ComponentFixture<AnimatedTitleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TitlebarComponent ]
+      declarations: [ AnimatedTitleComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TitlebarComponent);
+    fixture = TestBed.createComponent(AnimatedTitleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

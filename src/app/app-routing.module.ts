@@ -10,10 +10,17 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'elements',
+    path: 'characters',
     loadChildren: () =>
-      import('./modules/elements/elements.module').then(
-        (m) => m.ElementsModule
+      import('./modules/characters/characters.module').then(
+        (m) => m.CharactersModule
+      ),
+  },
+  {
+    path: 'characters/:name',
+    loadChildren: () =>
+      import('./modules/character-details/character-details.module').then(
+        (m) => m.CharacterDetailsModule
       ),
   },
   {

@@ -1,1 +1,15 @@
-<p>characters works!</p>
+<animated-title text="Characters"></animated-title>
+<div class="cards pad-32 flex-center">
+  <div
+    class="card pad-32"
+    *ngFor="let character of characters"
+    [style.background]="getEnum(character.element) + '99'"
+    (click)="lookCharacter(character.name)"
+  >
+    <img
+      [src]="character.images.icon || getImage(character.images.nameicon)"
+      alt=""
+      loading="lazy"
+    />
+  </div>
+</div>
