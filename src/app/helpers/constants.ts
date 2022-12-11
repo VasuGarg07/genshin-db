@@ -1,19 +1,3 @@
-export enum RarityIcon {
-  'Five' = 'https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Icon_5_Stars.png',
-  'Four' = 'https://static.wikia.nocookie.net/gensin-impact/images/7/77/Icon_4_Stars.png',
-  'Three' = 'https://static.wikia.nocookie.net/gensin-impact/images/1/11/Icon_3_Stars.png',
-  'Two' = 'https://static.wikia.nocookie.net/gensin-impact/images/6/64/Icon_2_Stars.png',
-  'One' = 'https://static.wikia.nocookie.net/gensin-impact/images/b/b7/Icon_1_Star.png',
-}
-
-export enum AllRarity {
-  'Five' = 5,
-  'Four' = 4,
-  'Three' = 3,
-  'Two' = 2,
-  'One' = 1,
-}
-
 export const Element = [
   'Anemo',
   'Cryo',

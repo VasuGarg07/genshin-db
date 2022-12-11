@@ -7,3 +7,10 @@ export enum Color {
   'Hydro' = '#2993F4',
   'Pyro' = '#F04D43',
 }
+export enum AllRarity {
+  'Five' = 5,
+  'Four' = 4,
+  'Three' = 3,
+  'Two' = 2,
+  'One' = 1,
+}

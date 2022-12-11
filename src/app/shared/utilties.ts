@@ -1,3 +1,5 @@
+import { Color } from '../helpers/enums';
+
 export namespace Utils {
   export const randomString = () => {
     return Math.random().toString(36).substring(2, 15);
@@ -43,5 +45,9 @@ export namespace Utils {
 
   export const uniqueArray = (array: any[]) => {
     return [...new Set(array)];
+  };
+
+  export const elementColor = (el: string): Color => {
+    return <Color>Color[el as keyof typeof Color];
   };
 }

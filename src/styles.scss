@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Aladin&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@300;400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 @import url("utilities.scss");
 html,
 body {
@@ -13,9 +14,9 @@ body {
   color: white;
   overflow-x: hidden;
   overflow-y: auto;
-  -webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none; /* IE and Edge */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none;
 }

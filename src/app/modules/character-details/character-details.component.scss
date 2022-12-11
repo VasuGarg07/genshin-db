@@ -1,0 +1,49 @@
+@mixin animation {
+  @for $i from 1 through 13 {
+    &:nth-child(#{$i}) {
+      animation: animateIn 2000ms ease #{$i * 400}ms forwards;
+      -webkit-animation: animateIn 2000ms ease #{$i * 400}ms forwards;
+    }
+  }
+}
+
+.container {
+  .cover {
+    border-radius: 3em;
+    box-shadow: rgb(0, 0, 0) 0px 5px 15px;
+    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.2);
+    column-gap: 4em;
+    .portrait {
+      flex: 2;
+    }
+    .details {
+      flex: 3;
+      .key {
+        margin: 20px;
+        font-family: "Lora", serif;
+        font-size: 24px;
+        line-height: 1.1;
+        opacity: 0;
+        @include animation;
+      }
+    }
+  }
+  .seemless-bottom {
+    padding: 32px 32px 0;
+  }
+}
+.image {
+  max-width: 100%;
+}
+
+@keyframes animateIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

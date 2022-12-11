@@ -1,4 +1,6 @@
-<animated-title text="Characters"></animated-title>
+<div class="pad-32">
+  <animated-title text="Characters"></animated-title>
+</div>
 <div class="cards pad-32 flex-center">
   <div
     class="card pad-32"
@@ -6,10 +8,6 @@
     [style.background]="getEnum(character.element) + '99'"
     (click)="lookCharacter(character.name)"
   >
-    <img
-      [src]="character.images.icon || getImage(character.images.nameicon)"
-      alt=""
-      loading="lazy"
-    />
+    <img [src]="character.images.icon" alt="" loading="lazy" />
   </div>
 </div>

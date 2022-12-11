@@ -1,1 +1,85 @@
-<div>{{ character | json }}</div>
+<div class="container pad-32">
+  <div class="cover seemless-bottom">
+    <animated-title
+      class="text-center"
+      [text]="character.name"
+    ></animated-title>
+    <img
+      *ngIf="character.images.namegachasplash"
+      class="image"
+      [src]="getImage(character.images.namegachasplash)"
+      alt=""
+      loading="lazy"
+    />
+  </div>
+  <div class="cover flex margin-hr">
+    <div class="details pad-32">
+      <div class="key">
+        Full Name
+        <span [style.color]="color">{{ character.fullname }}.</span>
+      </div>
+      <div class="key">
+        Popularly Known as
+        <span [style.color]="color">{{ character.title }}.</span>
+      </div>
+      <div class="key">
+        <span [style.color]="color">{{ character.description }}</span>
+      </div>
+      <div class="key flex">
+        Rarity
+        <span>
+          <img [src]="rarity(character.rarity)" alt="" loading="lazy" />
+        </span>
+      </div>
+      <div class="key flex">
+        Vision
+        <span class="flex" [style.color]="color">
+          <img [src]="element(character.element)" alt="" loading="lazy" />
+          <div>{{ character.element }}</div>
+        </span>
+      </div>
+      <div class="key">
+        Weilds
+        <span [style.color]="color">{{ character.weapontype }}</span>
+      </div>
+      <div class="key">
+        Substat
+        <span [style.color]="color">{{ character.substat }}</span>
+      </div>
+      <div class="key">
+        Gender
+        <span [style.color]="color">{{ character.gender }}</span>
+      </div>
+      <div class="key">
+        Nation
+        <span [style.color]="color">{{ character.region }}</span>
+      </div>
+      <div class="key">
+        Association
+        <span [style.color]="color">{{ character.association }}</span>
+      </div>
+      <div class="key">
+        Affiliation
+        <span [style.color]="color">{{ character.affiliation }}</span>
+      </div>
+      <div class="key">
+        Birthday
+        <span [style.color]="color">{{ character.birthday }}</span>
+      </div>
+      <div class="key">
+        Constellation
+        <span [style.color]="color">
+          {{ character.constellation }}
+        </span>
+      </div>
+    </div>
+    <div class="portrait">
+      <img
+        class="image"
+        [src]="character.images.cover2"
+        alt=""
+        loading="lazy"
+      />
+    </div>
+  </div>
+</div>

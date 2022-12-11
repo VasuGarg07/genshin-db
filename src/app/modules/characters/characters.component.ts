@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Character } from 'genshin-db';
 import { Color } from 'src/app/helpers/enums';
 import { GenshinService } from 'src/app/services/genshin.service';
+import { Utils } from 'src/app/shared/utilties';
 
 @Component({
   selector: 'app-characters',
@@ -18,12 +19,8 @@ export class CharactersComponent implements OnInit {
     this.characters = this.genshin.getAllCharacters();
   }
 
-  getEnum(el: string): Color {
-    return <Color>Color[el as keyof typeof Color];
-  }
-
-  getImage(nameIcon: string) {
-    return this.genshin.imageUrl(nameIcon);
+  getEnum(el: string) {
+    return Utils.elementColor(el);
   }
 
   elementIcon(name: string) {

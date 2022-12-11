@@ -1,6 +1,7 @@
 .flex {
   display: flex;
   align-items: center;
+  gap: 2px;
 }
 
 .flex-center {
@@ -61,6 +62,9 @@
 
 .margin-32 {
   margin: 32px;
+}
+.margin-hr {
+  margin: 32px 0;
 }
 
 .full-width {
