@@ -9,7 +9,6 @@
       class="image"
       [src]="getImage(character.images.namegachasplash)"
       alt=""
-      loading="lazy"
     />
   </div>
   <div class="cover flex margin-hr">
@@ -85,6 +84,10 @@
           {{ character.constellation }}
         </span>
       </div>
+      <div class="key">
+        Debut in version
+        <span [style.color]="color">{{ character.version }}.</span>
+      </div>
       <div class="key">Voiced By:</div>
       <div class="key flex-justify" [style.color]="color">
         <span class="flex" *ngFor="let va of character.cv | keyvalue">
@@ -100,6 +103,94 @@
         alt=""
         loading="lazy"
       />
+    </div>
+  </div>
+  <div class="cover pad-32 margin-hr">
+    <animated-title class="text-center" text="constellations"></animated-title>
+    <div class="flex-justify cards" [style.color]="color">
+      <div class="card pad-16 margin-16">
+        <img [src]="constellation.images.c1" alt="" />
+        <div class="name">{{ constellation.c1.name }}</div>
+        <div class="effect">{{ constellation.c1.effect }}</div>
+      </div>
+      <div class="card pad-16 margin-16">
+        <img [src]="constellation.images.c2" alt="" />
+        <div class="name">{{ constellation.c2.name }}</div>
+        <div class="effect">{{ constellation.c2.effect }}</div>
+      </div>
+      <div class="card pad-16 margin-16">
+        <img [src]="constellation.images.c3" alt="" />
+        <div class="name">{{ constellation.c3.name }}</div>
+        <div class="effect">{{ constellation.c3.effect }}</div>
+      </div>
+      <div class="card pad-16 margin-16">
+        <img [src]="constellation.images.c4" alt="" />
+        <div class="name">{{ constellation.c4.name }}</div>
+        <div class="effect">{{ constellation.c4.effect }}</div>
+      </div>
+      <div class="card pad-16 margin-16">
+        <img [src]="constellation.images.c5" alt="" />
+        <div class="name">{{ constellation.c5.name }}</div>
+        <div class="effect">{{ constellation.c5.effect }}</div>
+      </div>
+      <div class="card pad-16 margin-16">
+        <img [src]="constellation.images.c6" alt="" />
+        <div class="name">{{ constellation.c6.name }}</div>
+        <div class="effect">{{ constellation.c6.effect }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover pad-32 margin-hr">
+    <animated-title class="text-center" text="Talents"></animated-title>
+    <div class="flex-justify cards" [style.color]="color" *ngIf="talent.images">
+      <div class="card pad-16 margin-16">
+        <img [src]="getImage(talent.images.combat1)" alt="" />
+        <div class="name">{{ talent.combat1.name }}</div>
+        <div class="effect">{{ talent.combat1.info }}</div>
+      </div>
+      <div class="card pad-16 margin-16">
+        <img [src]="getImage(talent.images.combat2)" alt="" />
+        <div class="name">{{ talent.combat2.name }}</div>
+        <div class="effect">{{ talent.combat2.info }}</div>
+        <!-- <div>{{ talent.combat2.description }}</div> -->
+      </div>
+      <div class="card pad-16 margin-16">
+        <img [src]="getImage(talent.images.combat3)" alt="" />
+        <div class="name">{{ talent.combat3.name }}</div>
+        <div class="effect">{{ talent.combat3.info }}</div>
+        <!-- <div>{{ talent.combat3.description }}</div> -->
+      </div>
+      <div
+        class="card pad-16 margin-16"
+        *ngIf="talent.combatsp && talent.images.combatsp"
+      >
+        <img [src]="getImage(talent.images.combatsp)" alt="" />
+        <div class="name">{{ talent.combatsp.name }}</div>
+        <div class="effect">{{ talent.combatsp.info }}</div>
+      </div>
+
+      <div class="card pad-16 margin-16">
+        <img [src]="getImage(talent.images.passive1)" alt="" />
+        <div class="name">{{ talent.passive1.name }}</div>
+        <div class="effect">{{ talent.passive1.info }}</div>
+      </div>
+      <div class="card pad-16 margin-16">
+        <img [src]="getImage(talent.images.passive2)" alt="" />
+        <div class="name">{{ talent.passive2.name }}</div>
+        <div class="effect">{{ talent.passive2.info }}</div>
+      </div>
+      <div
+        class="card pad-16 margin-16"
+        *ngIf="talent.passive3 && talent.images.passive3"
+      >
+        <img [src]="getImage(talent.images.passive3)" alt="" />
+        <div class="name">{{ talent.passive3.name }}</div>
+        <div class="effect">{{ talent.passive3.info }}</div>
+      </div>
+      <div class="card pad-16 margin-16" *ngIf="talent.passive4">
+        <div class="name">{{ talent.passive4.name }}</div>
+        <div class="effect">{{ talent.passive4.info }}</div>
+      </div>
     </div>
   </div>
 </div>

@@ -12,11 +12,12 @@ import { Utils } from 'src/app/shared/utilties';
 })
 export class CharactersComponent implements OnInit {
   characters!: Character[];
-
   constructor(private genshin: GenshinService, private router: Router) {}
 
   ngOnInit(): void {
-    this.characters = this.genshin.getAllCharacters();
+    this.characters = this.genshin.getAllCharacters().filter((char) => {
+      return char.element !== 'None';
+    });
   }
 
   getEnum(el: string) {

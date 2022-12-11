@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Character } from 'genshin-db';
+import { Character, Constellation, Talent } from 'genshin-db';
 import { Color } from 'src/app/helpers/enums';
 import { GenshinService } from 'src/app/services/genshin.service';
 import { Utils } from 'src/app/shared/utilties';
@@ -14,6 +14,8 @@ export class CharacterDetailsComponent implements OnInit {
   character!: Character;
   charName!: string;
   color!: Color;
+  constellation!: Constellation;
+  talent!: Talent;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -24,10 +26,15 @@ export class CharacterDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const charData = this.genshin.getCharacter(this.charName);
-    if (charData) {
-      this.character = charData;
+    const data = this.genshin.getCharacter(this.charName);
+    const cnstl = this.genshin.getCharacterConstellations(this.charName);
+    const talent = this.genshin.getTalent(this.charName);
+    if (data && cnstl && talent) {
+      this.character = data;
       this.color = Utils.elementColor(this.character.element);
+      this.constellation = cnstl;
+      this.talent = talent;
+      console.log(this.character);
     } else this.router.navigate(['/characters']);
   }
 
