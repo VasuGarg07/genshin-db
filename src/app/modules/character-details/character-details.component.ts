@@ -41,4 +41,10 @@ export class CharacterDetailsComponent implements OnInit {
   element(vision: string) {
     return `/assets/vision/${vision.toLocaleLowerCase()}.svg`;
   }
+  weapon(type: string) {
+    return `/assets/weapons/${type.toLocaleLowerCase()}.png`;
+  }
+  flag(type: string) {
+    return `/assets/flags/${type.toLocaleLowerCase()}.svg`;
+  }
 }

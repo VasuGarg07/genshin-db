@@ -19,7 +19,7 @@
         <span [style.color]="color">{{ character.fullname }}.</span>
       </div>
       <div class="key">
-        Popularly Known as
+        Holds Title of
         <span [style.color]="color">{{ character.title }}.</span>
       </div>
       <div class="key">
@@ -34,13 +34,26 @@
       <div class="key flex">
         Vision
         <span class="flex" [style.color]="color">
-          <img [src]="element(character.element)" alt="" loading="lazy" />
-          <div>{{ character.element }}</div>
+          {{ character.element }}
+          <img
+            class="icon"
+            [src]="element(character.element)"
+            alt=""
+            loading="lazy"
+          />
         </span>
       </div>
-      <div class="key">
+      <div class="key flex">
         Weilds
-        <span [style.color]="color">{{ character.weapontype }}</span>
+        <span class="flex" [style.color]="color">
+          {{ character.weapontype }}
+          <img
+            class="icon"
+            [src]="weapon(character.weapontype)"
+            alt=""
+            loading="lazy"
+          />
+        </span>
       </div>
       <div class="key">
         Substat
@@ -59,17 +72,24 @@
         <span [style.color]="color">{{ character.association }}</span>
       </div>
       <div class="key">
-        Affiliation
+        Affiliated to
         <span [style.color]="color">{{ character.affiliation }}</span>
       </div>
       <div class="key">
-        Birthday
+        Born on
         <span [style.color]="color">{{ character.birthday }}</span>
       </div>
       <div class="key">
-        Constellation
+        Blessed under the stars of
         <span [style.color]="color">
           {{ character.constellation }}
+        </span>
+      </div>
+      <div class="key">Voiced By:</div>
+      <div class="key flex-justify" [style.color]="color">
+        <span class="flex" *ngFor="let va of character.cv | keyvalue">
+          <img class="icon" [src]="flag(va.key)" alt="" loading="lazy" />
+          {{ va.value }}
         </span>
       </div>
     </div>

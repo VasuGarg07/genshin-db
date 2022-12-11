@@ -1,5 +1,5 @@
 @mixin animation {
-  @for $i from 1 through 13 {
+  @for $i from 1 through 15 {
     &:nth-child(#{$i}) {
       animation: animateIn 2000ms ease #{$i * 400}ms forwards;
       -webkit-animation: animateIn 2000ms ease #{$i * 400}ms forwards;
@@ -26,6 +26,14 @@
         line-height: 1.1;
         opacity: 0;
         @include animation;
+        gap: 8 px;
+        .icon {
+          width: 40px;
+        }
+        span {
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
       }
     }
   }
