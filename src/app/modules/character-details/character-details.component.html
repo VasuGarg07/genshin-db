@@ -1,4 +1,5 @@
 <div class="container pad-32">
+  <!-- COVER -->
   <div class="cover seemless-bottom">
     <animated-title
       class="text-center"
@@ -11,6 +12,8 @@
       alt=""
     />
   </div>
+
+  <!-- PROFILE -->
   <div class="cover flex margin-hr">
     <div class="details pad-32">
       <div class="key">
@@ -24,47 +27,57 @@
       <div class="key">
         <span [style.color]="color">{{ character.description }}</span>
       </div>
-      <div class="key flex">
+      <div class="key" (click)="filter(character.rarity)">
         Rarity
         <span>
-          <img [src]="rarity(character.rarity)" alt="" loading="lazy" />
+          <img
+            [src]="getLocalImage('rarity', character.rarity, 'png')"
+            alt=""
+            loading="lazy"
+          />
         </span>
+        <span class="link">see more</span>
       </div>
-      <div class="key flex">
+      <div class="key" (click)="filter(character.element)">
         Vision
-        <span class="flex" [style.color]="color">
+        <span [style.color]="color">
           {{ character.element }}
           <img
             class="icon"
-            [src]="element(character.element)"
+            [src]="getLocalImage('vision', character.element, 'svg')"
             alt=""
             loading="lazy"
           />
         </span>
+        <span class="link">see more</span>
       </div>
-      <div class="key flex">
+      <div class="key" (click)="filter(character.weapontype)">
         Weilds
-        <span class="flex" [style.color]="color">
+        <span [style.color]="color">
           {{ character.weapontype }}
           <img
             class="icon"
-            [src]="weapon(character.weapontype)"
+            [src]="getLocalImage('weapons', character.weapontype, 'png')"
             alt=""
             loading="lazy"
           />
         </span>
+        <span class="link">see more</span>
       </div>
-      <div class="key">
+      <div class="key" (click)="filter(character.substat)">
         Substat
         <span [style.color]="color">{{ character.substat }}</span>
+        <span class="link">see more</span>
       </div>
-      <div class="key">
+      <div class="key" (click)="filter(character.gender)">
         Gender
         <span [style.color]="color">{{ character.gender }}</span>
+        <span class="link">see more</span>
       </div>
-      <div class="key">
+      <div class="key" (click)="filter(character.region)">
         Nation
         <span [style.color]="color">{{ character.region }}</span>
+        <span class="link">see more</span>
       </div>
       <div class="key">
         Association
@@ -91,7 +104,12 @@
       <div class="key">Voiced By:</div>
       <div class="key flex-justify" [style.color]="color">
         <span class="flex" *ngFor="let va of character.cv | keyvalue">
-          <img class="icon" [src]="flag(va.key)" alt="" loading="lazy" />
+          <img
+            class="icon"
+            [src]="getLocalImage('flags', va.key, 'svg')"
+            alt=""
+            loading="lazy"
+          />
           {{ va.value }}
         </span>
       </div>
@@ -105,6 +123,8 @@
       />
     </div>
   </div>
+
+  <!-- CONSTELLATIONS -->
   <div class="cover pad-32 margin-hr">
     <animated-title class="text-center" text="constellations"></animated-title>
     <div class="flex-justify cards" [style.color]="color">
@@ -140,6 +160,8 @@
       </div>
     </div>
   </div>
+
+  <!-- TALENTS -->
   <div class="cover pad-32 margin-hr">
     <animated-title class="text-center" text="Talents"></animated-title>
     <div class="flex-justify cards" [style.color]="color" *ngIf="talent.images">
@@ -190,6 +212,40 @@
       <div class="card pad-16 margin-16" *ngIf="talent.passive4">
         <div class="name">{{ talent.passive4.name }}</div>
         <div class="effect">{{ talent.passive4.info }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASCENSION COSTS -->
+  <div class="cover pad-32 margin-hr">
+    <animated-title class="text-center" text="Ascension Costs"></animated-title>
+    <div class="chart" [style.color]="color">
+      <div
+        class="chart-row flex"
+        *ngFor="let entry of iterableObject(character.costs)"
+      >
+        <div class="chart-item">Ascension {{ entry[0] | slice : 6 }}:</div>
+        <div class="chart-item flex-center" *ngFor="let material of entry[1]">
+          <div class="count">{{ material.count }}</div>
+          <img class="material" [src]="materialImage(material.name)" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TALENT COSTS -->
+  <div class="cover pad-32 margin-hr">
+    <animated-title class="text-center" text="talent costs"></animated-title>
+    <div class="chart" [style.color]="color">
+      <div
+        class="chart-row flex"
+        *ngFor="let entry of iterableObject(talent.costs)"
+      >
+        <div class="chart-item">Level {{ entry[0] | slice : 3 }}:</div>
+        <div class="chart-item flex-center" *ngFor="let material of entry[1]">
+          <div class="count">{{ material.count }}</div>
+          <img class="material" [src]="materialImage(material.name)" alt="" />
+        </div>
       </div>
     </div>
   </div>

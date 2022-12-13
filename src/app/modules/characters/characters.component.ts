@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from 'genshin-db';
-import { Color } from 'src/app/helpers/enums';
 import { GenshinService } from 'src/app/services/genshin.service';
 import { Utils } from 'src/app/shared/utilties';
 
@@ -12,12 +11,38 @@ import { Utils } from 'src/app/shared/utilties';
 })
 export class CharactersComponent implements OnInit {
   characters!: Character[];
-  constructor(private genshin: GenshinService, private router: Router) {}
+  title!: string;
+
+  // TODO: FILTERS
+  constructor(
+    private genshin: GenshinService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    const key = this.route.snapshot.paramMap.get('name');
+    const chars = key && this.genshin.filterCharacters(key);
+    if (typeof chars === 'object' && Array.isArray(chars)) {
+      this.characters = chars.filter((char) => {
+        return char.element !== 'None';
+      });
+    } else if (chars && typeof chars === 'object') {
+      this.characters = [chars].filter((char) => {
+        return char.element !== 'None';
+      });
+    }
+    this.title = key
+      ? parseInt(key)
+        ? key + '* characters'
+        : key + ' characters'
+      : 'Characters';
+  }
 
   ngOnInit(): void {
-    this.characters = this.genshin.getAllCharacters().filter((char) => {
-      return char.element !== 'None';
-    });
+    if (!this.characters || !this.characters.length) {
+      this.characters = this.genshin.getAllCharacters().filter((char) => {
+        return char.element !== 'None';
+      });
+    }
   }
 
   getEnum(el: string) {
@@ -29,6 +54,6 @@ export class CharactersComponent implements OnInit {
   }
 
   lookCharacter(name: string) {
-    this.router.navigate(['/characters', name]);
+    this.router.navigate(['/character', name]);
   }
 }

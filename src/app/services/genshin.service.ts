@@ -39,7 +39,7 @@ export class GenshinService {
     return genshindb.talents(name);
   }
 
-  getCharacterConstellations(name: string) {
+  getConstellation(name: string) {
     return genshindb.constellations(name);
   }
 
@@ -132,6 +132,10 @@ export class GenshinService {
 
   getTalentMaterial(name: string) {
     return genshindb.talentmaterialtypes(name);
+  }
+
+  getMaterial(name: string) {
+    return genshindb.materials(name);
   }
 
   getAllDoamins() {

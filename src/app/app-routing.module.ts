@@ -19,9 +19,26 @@ const routes: Routes = [
   {
     path: 'characters/:name',
     loadChildren: () =>
+      import('./modules/characters/characters.module').then(
+        (m) => m.CharactersModule
+      ),
+  },
+  {
+    path: 'character/:name',
+    loadChildren: () =>
       import('./modules/character-details/character-details.module').then(
         (m) => m.CharacterDetailsModule
       ),
+  },
+  {
+    path: 'weapons',
+    loadChildren: () =>
+      import('./modules/weapons/weapons.module').then((m) => m.WeaponsModule),
+  },
+  {
+    path: 'weapons/:name',
+    loadChildren: () =>
+      import('./modules/weapons/weapons.module').then((m) => m.WeaponsModule),
   },
   {
     path: '',

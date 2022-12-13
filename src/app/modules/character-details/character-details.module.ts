@@ -7,6 +7,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { AnimatedTitleModule } from 'src/app/shared/animated-title/animated-title.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   declarations: [CharacterDetailsComponent],
   imports: [

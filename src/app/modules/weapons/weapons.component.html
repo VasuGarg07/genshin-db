@@ -1,1 +1,12 @@
-<p>weapons works!</p>
+<div class="pad-32">
+  <animated-title [text]="title"></animated-title>
+</div>
+<div class="cards pad-32 flex-center">
+  <div
+    class="card pad-32"
+    *ngFor="let weapon of weapons"
+    (click)="lookWeapon(weapon.name)"
+  >
+    <img [src]="weapon.images.icon" alt="" loading="lazy" />
+  </div>
+</div>

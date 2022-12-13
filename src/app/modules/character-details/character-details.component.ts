@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Character, Constellation, Talent } from 'genshin-db';
+import { Character, Constellation, Items, Talent } from 'genshin-db';
 import { Color } from 'src/app/helpers/enums';
+import { REGEX } from 'src/app/helpers/regex';
 import { GenshinService } from 'src/app/services/genshin.service';
 import { Utils } from 'src/app/shared/utilties';
 
@@ -16,6 +17,8 @@ export class CharacterDetailsComponent implements OnInit {
   color!: Color;
   constellation!: Constellation;
   talent!: Talent;
+
+  // TODO: Character Level Stats & Talent Stats
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -27,14 +30,13 @@ export class CharacterDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const data = this.genshin.getCharacter(this.charName);
-    const cnstl = this.genshin.getCharacterConstellations(this.charName);
+    const constellation = this.genshin.getConstellation(this.charName);
     const talent = this.genshin.getTalent(this.charName);
-    if (data && cnstl && talent) {
+    if (data && constellation && talent) {
       this.character = data;
       this.color = Utils.elementColor(this.character.element);
-      this.constellation = cnstl;
+      this.constellation = constellation;
       this.talent = talent;
-      console.log(this.character);
     } else this.router.navigate(['/characters']);
   }
 
@@ -42,16 +44,30 @@ export class CharacterDetailsComponent implements OnInit {
     return this.genshin.imageUrl(nameIcon);
   }
 
-  rarity(num: string) {
-    return `/assets/rarity/Icon_${num}_Stars.png`;
+  getLocalImage(folder: string, file: string, type: string) {
+    return `/assets/${folder}/${file.toLocaleLowerCase()}.${type}`;
   }
-  element(vision: string) {
-    return `/assets/vision/${vision.toLocaleLowerCase()}.svg`;
+
+  matchesRegex(input: string, regex: RegExp): boolean {
+    return regex.test(input);
   }
-  weapon(type: string) {
-    return `/assets/weapons/${type.toLocaleLowerCase()}.png`;
+
+  materialImage(name: string) {
+    const material = this.genshin.getMaterial(name);
+    if (material) {
+      return material.images.fandom
+        ? material.images.fandom
+        : this.getImage(material.images.nameicon);
+    } else {
+      return;
+    }
   }
-  flag(type: string) {
-    return `/assets/flags/${type.toLocaleLowerCase()}.svg`;
+
+  filter(key: string) {
+    this.router.navigate(['/characters', key]);
+  }
+
+  iterableObject(obj: any): [string, Items[]][] {
+    return Object.entries(obj);
   }
 }
