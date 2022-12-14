@@ -3,10 +3,12 @@
 </div>
 <div class="cards pad-32 flex-center">
   <div
+    [style.background]="'url(' + background(weapon.rarity) + ')'"
+    [style.backgroundSize]="'contain'"
     class="card pad-32"
     *ngFor="let weapon of weapons"
     (click)="lookWeapon(weapon.name)"
   >
-    <img [src]="weapon.images.icon" alt="" loading="lazy" />
+    <img [src]="getImage(weapon.images.nameicon)" alt="" loading="lazy" />
   </div>
 </div>

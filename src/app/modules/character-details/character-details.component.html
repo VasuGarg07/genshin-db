@@ -15,7 +15,7 @@
 
   <!-- PROFILE -->
   <div class="cover flex margin-hr">
-    <div class="details pad-32">
+    <div class="flex-3 pad-32">
       <div class="key">
         Full Name
         <span [style.color]="color">{{ character.fullname }}.</span>
@@ -114,7 +114,7 @@
         </span>
       </div>
     </div>
-    <div class="portrait">
+    <div class="flex-2">
       <img
         class="image"
         [src]="character.images.cover2"
@@ -248,5 +248,41 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- STATS CALCULATOR -->
+  <div class="cover">
+    <animated-title
+      class="text-center pad-32"
+      text="level stats"
+    ></animated-title>
+    <div class="chart pad-32">
+      <mat-slider
+        max="90"
+        min="1"
+        step="1"
+        thumbLabel="true"
+        tickInterval="1"
+        color="primary"
+        class="level-slide"
+        (change)="levelStats($event.value)"
+      >
+        <input matSliderThumb />
+      </mat-slider>
+      <div class="stats flex-justify chart-row">
+        <div class="chart-item">Level: {{ stats.level }}</div>
+        <div class="chart-item">HP: {{ stats.hp | number : "1.0-0" }}</div>
+        <div class="chart-item">
+          Attack: {{ stats.attack | number : "1.0-0" }}
+        </div>
+        <div class="chart-item">
+          Defense: {{ stats.defense | number : "1.0-0" }}
+        </div>
+        <div class="chart-item">
+          {{ character.substat }}: {{ stats.specialized | percent }}
+        </div>
+      </div>
+    </div>
+    <img class="image" [src]="character.images.cover1" alt="" loading="lazy" />
   </div>
 </div>

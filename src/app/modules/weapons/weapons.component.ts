@@ -43,11 +43,15 @@ export class WeaponsComponent implements OnInit {
     return Utils.elementColor(el);
   }
 
-  elementIcon(name: string) {
-    return `/assets/elements/${name.toLocaleLowerCase()}.svg`;
+  background(name: string) {
+    return `/assets/quality-bg/${name}.png`;
   }
 
   lookWeapon(name: string) {
     this.router.navigate(['/weapon', name]);
+  }
+
+  getImage(nameIcon: string) {
+    return this.genshin.imageUrl(nameIcon);
   }
 }

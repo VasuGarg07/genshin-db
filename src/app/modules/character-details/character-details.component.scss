@@ -14,36 +14,30 @@
     backdrop-filter: blur(8px);
     background-color: rgba(0, 0, 0, 0.2);
     column-gap: 4em;
-    .portrait {
-      flex: 2;
-    }
-    .details {
-      flex: 3;
-      .key {
-        margin: 20px;
-        font-family: "Lora", serif;
-        font-size: 24px;
-        line-height: 1.1;
-        display: flex;
-        align-items: baseline;
-        gap: 8px;
-        .icon {
-          width: 40px;
-        }
-        span {
-          text-transform: uppercase;
-          letter-spacing: 1px;
-        }
+    .key {
+      margin: 20px;
+      font-family: "Lora", serif;
+      font-size: 24px;
+      line-height: 1.1;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      .icon {
+        width: 40px;
+      }
+      span {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .link {
+        font-size: 12px;
+        text-transform: lowercase;
+      }
+      &:hover,
+      &:active {
         .link {
-          font-size: 12px;
-          text-transform: lowercase;
-        }
-        &:hover,
-        &:active {
-          .link {
-            cursor: pointer;
-            text-decoration: underline;
-          }
+          cursor: pointer;
+          text-decoration: underline;
         }
       }
     }
@@ -90,6 +84,9 @@
           }
         }
       }
+    }
+    .level-slide {
+      width: 100%;
     }
   }
   .seemless-bottom {

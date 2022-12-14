@@ -49,11 +49,12 @@ export class CharactersComponent implements OnInit {
     return Utils.elementColor(el);
   }
 
-  elementIcon(name: string) {
-    return `/assets/elements/${name.toLocaleLowerCase()}.svg`;
-  }
-
   lookCharacter(name: string) {
     this.router.navigate(['/character', name]);
+  }
+
+  background(character: Character) {
+    const hex = this.getEnum(character.element);
+    return `linear-gradient(0deg, ${hex}88, ${hex}66), url("/assets/quality-bg/1.png")`;
   }
 }
