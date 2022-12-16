@@ -251,26 +251,22 @@
   </div>
 
   <!-- STATS CALCULATOR -->
-  <div class="cover">
-    <animated-title
-      class="text-center pad-32"
-      text="level stats"
-    ></animated-title>
-    <div class="chart pad-32">
-      <mat-slider
+  <div class="cover pad-32">
+    <animated-title class="text-center" text="level stats"></animated-title>
+    <img class="image" [src]="character.images.cover1" alt="" loading="lazy" />
+    <div class="chart margin-hr pad-32" [style.color]="color">
+      <input
+        type="range"
         max="90"
         min="1"
-        step="1"
-        thumbLabel="true"
-        tickInterval="1"
-        color="primary"
-        class="level-slide"
-        (change)="levelStats($event.value)"
-      >
-        <input matSliderThumb />
-      </mat-slider>
-      <div class="stats flex-justify chart-row">
+        value="80"
+        class="range"
+        #slider
+        (change)="levelStats(slider.value)"
+      />
+      <div class="flex-justify chart-row">
         <div class="chart-item">Level: {{ stats.level }}</div>
+        <div class="chart-item">Ascension: {{ stats.ascension }}</div>
         <div class="chart-item">HP: {{ stats.hp | number : "1.0-0" }}</div>
         <div class="chart-item">
           Attack: {{ stats.attack | number : "1.0-0" }}
@@ -283,6 +279,5 @@
         </div>
       </div>
     </div>
-    <img class="image" [src]="character.images.cover1" alt="" loading="lazy" />
   </div>
 </div>

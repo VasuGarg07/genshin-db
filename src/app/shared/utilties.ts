@@ -1,4 +1,4 @@
-import { Color } from '../helpers/enums';
+import { RarityColor, VisionColor } from '../helpers/enums';
 
 export namespace Utils {
   export const randomString = () => {
@@ -47,7 +47,11 @@ export namespace Utils {
     return [...new Set(array)];
   };
 
-  export const elementColor = (el: string): Color => {
-    return <Color>Color[el as keyof typeof Color];
+  export const elementColor = (el: string): VisionColor => {
+    return <VisionColor>VisionColor[el as keyof typeof VisionColor];
+  };
+
+  export const rarityColor = (el: string): RarityColor => {
+    return <RarityColor>RarityColor[el as keyof typeof RarityColor];
   };
 }

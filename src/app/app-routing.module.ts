@@ -41,6 +41,13 @@ const routes: Routes = [
       import('./modules/weapons/weapons.module').then((m) => m.WeaponsModule),
   },
   {
+    path: 'weapon/:name',
+    loadChildren: () =>
+      import('./modules/weapon-details/weapon-details.module').then(
+        (m) => m.WeaponDetailsModule
+      ),
+  },
+  {
     path: '',
     redirectTo: '/dashboard',
     pathMatch: 'full',

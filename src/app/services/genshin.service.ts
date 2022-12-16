@@ -30,8 +30,11 @@ export class GenshinService {
     return genshindb.characters(name);
   }
 
-  getCharacterStats(name: string, level: number, ascension: boolean = false) {
-    const ascended = ascension ? '+' : '-';
+  getCharacterStats(name: string, level: number) {
+    const ascended =
+      level == 20 || (level >= 40 && level <= 80 && level % 10 == 0)
+        ? '+'
+        : '-';
     return genshindb.characters(name)?.stats(level, ascended);
   }
 

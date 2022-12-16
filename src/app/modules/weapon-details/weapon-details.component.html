@@ -1,0 +1,56 @@
+<div class="container pad-32">
+  <!-- PROFILE -->
+  <div class="cover pad-32">
+    <animated-title class="text-center" [text]="weaponName"></animated-title>
+    <div class="flex">
+      <div class="flex-3">
+        <div class="key">
+          <span [style.color]="color">{{ weaponData.description }}</span>
+        </div>
+        <div class="key" (click)="filter(weaponData.rarity)">
+          Rarity
+          <span>
+            <img
+              [src]="getLocalImage('rarity', weaponData.rarity, 'png')"
+              alt=""
+              loading="lazy"
+            />
+          </span>
+          <span class="link">see more</span>
+        </div>
+
+        <div class="key" (click)="filter(weaponData.weapontype)">
+          Type
+          <span [style.color]="color">
+            {{ weaponData.weapontype }}
+            <img
+              class="icon"
+              [src]="getLocalImage('weapons', weaponData.weapontype, 'png')"
+              alt=""
+              loading="lazy"
+            />
+          </span>
+          <span class="link">see more</span>
+        </div>
+        <div class="key" (click)="filter(weaponData.substat)">
+          Substat
+          <span [style.color]="color">{{ weaponData.substat }}</span>
+          <span class="link">see more</span>
+        </div>
+
+        <div class="key">
+          Released in version
+          <span [style.color]="color">{{ weaponData.version }}.</span>
+        </div>
+      </div>
+      <div class="flex-2">
+        <img
+          class="image"
+          [src]="getImage(weaponData.images.namegacha)"
+          alt=""
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</div>
