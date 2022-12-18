@@ -41,30 +41,15 @@
         font-family: "Lora", serif;
         font-size: 20px;
         line-height: 1.1;
-        color: #f4f4f4;
-        text-align: center;
-        .chart-item {
-          width: calc(100% / 6);
-          .material {
-            max-width: 40%;
-          }
+        color: white;
+        .material {
+          max-width: 40%;
         }
+        // &:hover {
+        //   transform: scale(1.2);
+        //   transition: transform 1s ease;
+        // }
       }
-    }
-    .range {
-      width: 100%;
-      background: #111;
-      outline: none;
-      border-radius: 15px;
-      overflow: hidden;
-      margin-bottom: 12px;
-    }
-    .range::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      cursor: pointer;
     }
   }
 }

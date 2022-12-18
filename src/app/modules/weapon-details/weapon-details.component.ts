@@ -14,7 +14,7 @@ export class WeaponDetailsComponent implements OnInit {
   weaponData!: Weapon;
   weaponName!: string;
   color!: RarityColor;
-  stats!: StatResult;
+  stats: StatResult[] = [];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -33,7 +33,8 @@ export class WeaponDetailsComponent implements OnInit {
     if (data) {
       this.weaponData = data;
       this.color = Utils.rarityColor(this.weaponData.rarity);
-      console.log(this.weaponData, this.color);
+      this.levelStats();
+      console.log(this.weaponData, this.stats);
     } else this.router.navigate(['/weapons']);
   }
 
@@ -68,8 +69,19 @@ export class WeaponDetailsComponent implements OnInit {
     return Object.entries(obj);
   }
 
-  levelStats(level: string) {
-    const stats = this.genshin.getWeaponStats(this.weaponName, parseInt(level));
-    stats && (this.stats = stats);
+  levelStats() {
+    for (let level = 1; level <= 90; level++) {
+      const stats = this.genshin.getWeaponStats(this.weaponName, level);
+      stats && this.stats.push(stats);
+      if (level == 20 || (level >= 40 && level <= 80 && !(level % 10))) {
+        const ascended = this.genshin.getWeaponStats(
+          this.weaponName,
+          level,
+          true
+        );
+        ascended && this.stats.push(ascended);
+      }
+    }
+    console.log(this.stats);
   }
 }

@@ -22,9 +22,13 @@ export class WeaponsComponent implements OnInit {
     const key = this.route.snapshot.paramMap.get('name');
     const weapons = key && this.genshin.filterWeapons(key);
     if (typeof weapons === 'object' && Array.isArray(weapons)) {
-      this.weapons = weapons;
+      this.weapons = weapons.filter((w: Weapon) => {
+        return w.costs.ascend5;
+      });
     } else if (weapons && typeof weapons === 'object') {
-      this.weapons = [weapons];
+      this.weapons = [weapons].filter((w: Weapon) => {
+        return w.costs.ascend5;
+      });
     }
     this.title = key
       ? parseInt(key)
@@ -35,7 +39,9 @@ export class WeaponsComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.weapons || !this.weapons.length) {
-      this.weapons = this.genshin.getAllWeapons();
+      this.weapons = this.genshin.getAllWeapons().filter((w: Weapon) => {
+        return w.costs.ascend5;
+      });
     }
   }
 

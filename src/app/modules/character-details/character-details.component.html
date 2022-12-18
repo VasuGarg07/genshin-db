@@ -236,7 +236,7 @@
   <!-- TALENT COSTS -->
   <div class="cover pad-32 margin-hr">
     <animated-title class="text-center" text="talent costs"></animated-title>
-    <div class="chart" [style.color]="color">
+    <div class="chart pad-32" [style.color]="color">
       <div
         class="chart-row flex"
         *ngFor="let entry of iterableObject(talent.costs)"
@@ -275,7 +275,12 @@
           Defense: {{ stats.defense | number : "1.0-0" }}
         </div>
         <div class="chart-item">
-          {{ character.substat }}: {{ stats.specialized | percent }}
+          {{ character.substat }}:
+          {{
+            character.substat == "Elemental Mastery"
+              ? (stats.specialized | number : "1.0-0")
+              : (stats.specialized | percent)
+          }}
         </div>
       </div>
     </div>

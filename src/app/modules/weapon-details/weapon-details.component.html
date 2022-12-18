@@ -43,7 +43,7 @@
           <span [style.color]="color">{{ weaponData.version }}.</span>
         </div>
       </div>
-      <div class="flex-2">
+      <div class="flex-1">
         <img
           class="image"
           [src]="getImage(weaponData.images.namegacha)"
@@ -53,4 +53,58 @@
       </div>
     </div>
   </div>
+
+  <!-- ASCENSION COSTS -->
+  <div class="cover pad-32 margin-hr">
+    <animated-title class="text-center" text="Ascension Costs"></animated-title>
+    <div class="chart pad-32" [style.color]="color">
+      <div
+        class="chart-row flex-center"
+        *ngFor="let entry of iterableObject(weaponData.costs)"
+      >
+        <div class="flex-1">Ascension {{ entry[0] | slice : 6 }}:</div>
+        <div class="flex-center flex-1" *ngFor="let material of entry[1]">
+          <div class="count">{{ material.count }}</div>
+          <img class="material" [src]="materialImage(material.name)" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS CALCULATOR -->
+  <div class="cover pad-32">
+    <animated-title class="text-center" text="level stats"></animated-title>
+    <div class="chart margin-hr pad-32 text-center" [style.color]="color">
+      <div class="flex-center chart-row">
+        <div class="flex-1">Level</div>
+        <div class="flex-1">Attack</div>
+        <div class="flex-1">{{ weaponData.substat }}</div>
+      </div>
+      <hr />
+      <div
+        class="flex-center chart-row"
+        *ngFor="let stat of stats; let i = index"
+      >
+        <div class="flex-1">{{ stat.level }}</div>
+        <div class="flex-1">{{ stat.attack | number : "1.0-0" }}</div>
+        <div
+          class="flex-1"
+          *ngIf="
+            i == 0 || stat.specialized !== stats[i - 1].specialized;
+            else dash
+          "
+        >
+          {{
+            weaponData.substat == "Elemental Mastery"
+              ? (stat.specialized | number : "1.0-0")
+              : (stat.specialized | percent)
+          }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<ng-template #dash>
+  <div class="flex-1"></div>
+</ng-template>
