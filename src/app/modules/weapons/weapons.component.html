@@ -1,20 +1,15 @@
 <div class="cards flex-center">
   <div
-    class="card flex-justify"
+    class="tile image-container"
     *ngFor="let weapon of weapons"
+    [style.backgroundImage]="background(weapon.rarity)"
     (click)="lookWeapon(weapon.name)"
   >
-    <div class="flex-3 pad-32">
-      <div class="card-name">{{ weapon.name | uppercase }}</div>
-      <img [src]="rarity(weapon.rarity)" alt="" />
-    </div>
-    <div class="flex-1 image-container pad-32">
-      <img
-        class="fit-image weapon-image"
-        [src]="thumb(weapon)"
-        alt=""
-        loading="lazy"
-      />
-    </div>
+    <img
+      class="fit-image weapon-image"
+      [src]="thumb(weapon)"
+      alt=""
+      loading="lazy"
+    />
   </div>
 </div>

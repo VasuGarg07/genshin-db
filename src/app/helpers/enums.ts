@@ -8,9 +8,9 @@ export enum VisionColor {
   'Pyro' = '#F04D43',
 }
 export enum RarityColor {
-  '#ba8d51' = 5,
-  '#9775b0' = 4,
-  '#5188a1' = 3,
+  '#ddb634' = 5,
+  '#b87fe2' = 4,
+  '#6bbee4' = 3,
   '#567e67' = 2,
   '#6f7983' = 1,
 }

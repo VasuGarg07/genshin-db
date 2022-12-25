@@ -49,8 +49,9 @@ export class WeaponsComponent implements OnInit {
     this.router.navigate(['/weapon', name]);
   }
 
-  weaponIcon(el: string) {
-    return Utils.weaponIcon(el);
+  background(el: string) {
+    const img = Utils.rarityBg(el);
+    return `url('${img}')`;
   }
 
   rarity(el: string) {
@@ -58,6 +59,6 @@ export class WeaponsComponent implements OnInit {
   }
 
   thumb(weapon: Weapon) {
-    return this.genshin.imageUrl(weapon.images.namegacha);
+    return this.genshin.imageUrl(weapon.images.nameicon);
   }
 }
