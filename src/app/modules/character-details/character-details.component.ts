@@ -22,7 +22,7 @@ export class CharacterDetailsComponent implements OnInit {
   color!: VisionColor;
   constellation!: Constellation;
   talent!: Talent;
-  stats!: StatResult;
+  stats: StatResult[] = [];
   // TODO: Character Level Stats & Talent Stats
   constructor(
     private route: ActivatedRoute,
@@ -40,7 +40,7 @@ export class CharacterDetailsComponent implements OnInit {
       this.color = Utils.elementColor(this.character.element);
       this.constellation = this.genshin.getConstellation(this.charName)!;
       this.talent = this.genshin.getTalent(this.charName)!;
-      this.levelStats('80');
+      this.stat();
       console.log(this.talent.costs);
     } else this.router.navigate(['/characters']);
   }
@@ -72,12 +72,12 @@ export class CharacterDetailsComponent implements OnInit {
     return Object.entries(obj);
   }
 
-  levelStats(level: string) {
-    const stats = this.genshin.getCharacterStats(
-      this.charName,
-      parseInt(level)
-    );
-    stats && (this.stats = stats);
+  stat() {
+    const levels = [1, 20, 40, 50, 60, 70, 80, 90];
+    levels.forEach((i) => {
+      this.stats.push(this.character.stats(i));
+      i > 1 && i < 90 && this.stats.push(this.character.stats(i, '+'));
+    });
   }
 
   // vision(el: string) {
