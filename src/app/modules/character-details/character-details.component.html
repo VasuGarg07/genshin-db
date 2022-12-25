@@ -1,288 +1,360 @@
-<div class="container pad-32">
-  <!-- COVER -->
-  <div class="cover seemless-bottom">
-    <animated-title
-      class="text-center"
-      [text]="character.name"
-    ></animated-title>
+<div class="character-splash">
+  <div class="title pad-32 text-end" [style.color]="color">
+    {{ character.title | titlecase }} | {{ character.name | uppercase }}
+  </div>
+  <div class="image-container">
     <img
-      *ngIf="character.images.namegachasplash"
-      class="image"
-      [src]="getImage(character.images.namegachasplash)"
+      class="fit-image"
+      [src]="image(character.images.namegachasplash!)"
       alt=""
     />
   </div>
+</div>
 
-  <!-- PROFILE -->
-  <div class="cover flex margin-hr">
-    <div class="flex-3 pad-32">
-      <div class="key">
-        Full Name
-        <span [style.color]="color">{{ character.fullname }}.</span>
-      </div>
-      <div class="key">
-        Holds Title of
-        <span [style.color]="color">{{ character.title }}.</span>
-      </div>
-      <div class="key">
-        <span [style.color]="color">{{ character.description }}</span>
-      </div>
-      <div class="key" (click)="filter(character.rarity)">
-        Rarity
-        <span>
-          <img
-            [src]="getLocalImage('rarity', character.rarity, 'png')"
-            alt=""
-            loading="lazy"
-          />
-        </span>
-        <span class="link">see more</span>
-      </div>
-      <div class="key" (click)="filter(character.element)">
-        Vision
-        <span [style.color]="color">
-          {{ character.element }}
-          <img
-            class="icon"
-            [src]="getLocalImage('vision', character.element, 'svg')"
-            alt=""
-            loading="lazy"
-          />
-        </span>
-        <span class="link">see more</span>
-      </div>
-      <div class="key" (click)="filter(character.weapontype)">
-        Weilds
-        <span [style.color]="color">
-          {{ character.weapontype }}
-          <img
-            class="icon"
-            [src]="getLocalImage('weapons', character.weapontype, 'png')"
-            alt=""
-            loading="lazy"
-          />
-        </span>
-        <span class="link">see more</span>
-      </div>
-      <div class="key" (click)="filter(character.substat)">
-        Substat
-        <span [style.color]="color">{{ character.substat }}</span>
-        <span class="link">see more</span>
-      </div>
-      <div class="key" (click)="filter(character.gender)">
-        Gender
-        <span [style.color]="color">{{ character.gender }}</span>
-        <span class="link">see more</span>
-      </div>
-      <div class="key" (click)="filter(character.region)">
-        Nation
-        <span [style.color]="color">{{ character.region }}</span>
-        <span class="link">see more</span>
-      </div>
-      <div class="key">
-        Association
-        <span [style.color]="color">{{ character.association }}</span>
-      </div>
-      <div class="key">
-        Affiliated to
-        <span [style.color]="color">{{ character.affiliation }}</span>
-      </div>
-      <div class="key">
-        Born on
-        <span [style.color]="color">{{ character.birthday }}</span>
-      </div>
-      <div class="key">
-        Blessed under the stars of
-        <span [style.color]="color">
-          {{ character.constellation }}
-        </span>
-      </div>
-      <div class="key">
-        Debut in version
-        <span [style.color]="color">{{ character.version }}.</span>
-      </div>
-      <div class="key">Voiced By:</div>
-      <div class="key flex-justify" [style.color]="color">
-        <span class="flex" *ngFor="let va of character.cv | keyvalue">
-          <img
-            class="icon"
-            [src]="getLocalImage('flags', va.key, 'svg')"
-            alt=""
-            loading="lazy"
-          />
-          {{ va.value }}
-        </span>
-      </div>
-    </div>
-    <div class="flex-2">
-      <img
-        class="image"
-        [src]="character.images.cover2"
-        alt=""
-        loading="lazy"
-      />
+<div class="cards flex-center">
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Character</div>
+    <div class="info-card-data pad-32">
+      <ul>
+        <li>Title: {{ character.title }}</li>
+        <li>
+          Star Rank:
+          <span class="nav-link" [style.color]="color">
+            {{ character.rarity }} {{ starRank(character.rarity) }}
+          </span>
+        </li>
+        <li>
+          Vision:
+          <span class="nav-link" [style.color]="color">{{
+            character.element
+          }}</span>
+        </li>
+        <li>
+          Weapon:
+          <span class="nav-link" [style.color]="color">{{
+            character.weapontype
+          }}</span>
+        </li>
+        <li>
+          Primary Attribute:
+          <span class="nav-link" [style.color]="color">{{
+            character.substat
+          }}</span>
+        </li>
+        <li>
+          Origin:
+          <span class="nav-link" [style.color]="color">
+            {{ character.region }}</span
+          >
+        </li>
+        <li>Affiliation: {{ character.affiliation }}</li>
+        <li>Constellation: {{ character.constellation }}</li>
+        <li *ngIf="character.url && character.url.fandom">
+          <a
+            class="nav-link"
+            [href]="character.url.fandom"
+            target="_blank"
+            [style.color]="color"
+          >
+            Know More about {{ character.fullname }}
+            <mat-icon>open_in_new</mat-icon></a
+          >
+        </li>
+      </ul>
     </div>
   </div>
 
-  <!-- CONSTELLATIONS -->
-  <div class="cover pad-32 margin-hr">
-    <animated-title class="text-center" text="constellations"></animated-title>
-    <div class="flex-justify cards" [style.color]="color">
-      <div class="card pad-16 margin-16">
-        <img [src]="constellation.images.c1" alt="" />
-        <div class="name">{{ constellation.c1.name }}</div>
-        <div class="effect">{{ constellation.c1.effect }}</div>
-      </div>
-      <div class="card pad-16 margin-16">
-        <img [src]="constellation.images.c2" alt="" />
-        <div class="name">{{ constellation.c2.name }}</div>
-        <div class="effect">{{ constellation.c2.effect }}</div>
-      </div>
-      <div class="card pad-16 margin-16">
-        <img [src]="constellation.images.c3" alt="" />
-        <div class="name">{{ constellation.c3.name }}</div>
-        <div class="effect">{{ constellation.c3.effect }}</div>
-      </div>
-      <div class="card pad-16 margin-16">
-        <img [src]="constellation.images.c4" alt="" />
-        <div class="name">{{ constellation.c4.name }}</div>
-        <div class="effect">{{ constellation.c4.effect }}</div>
-      </div>
-      <div class="card pad-16 margin-16">
-        <img [src]="constellation.images.c5" alt="" />
-        <div class="name">{{ constellation.c5.name }}</div>
-        <div class="effect">{{ constellation.c5.effect }}</div>
-      </div>
-      <div class="card pad-16 margin-16">
-        <img [src]="constellation.images.c6" alt="" />
-        <div class="name">{{ constellation.c6.name }}</div>
-        <div class="effect">{{ constellation.c6.effect }}</div>
-      </div>
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Information</div>
+    <div class="info-card-data pad-32">
+      <ul>
+        <li>
+          Gender: {{ character.gender }}
+          {{ character.gender == "Male" ? "♂" : "♀" }}
+        </li>
+        <li>Body Type: {{ character.body }}</li>
+        <li>Birthday: {{ character.birthday }}</li>
+        <li>Debut in: Version {{ character.version }}</li>
+        <li>English Voice: {{ character.cv.english }}</li>
+        <li>Chinese Voice: {{ character.cv.chinese }}</li>
+        <li>Japanese Voice: {{ character.cv.japanese }}</li>
+        <li>Korean Voice: {{ character.cv.korean }}</li>
+      </ul>
     </div>
   </div>
 
-  <!-- TALENTS -->
-  <div class="cover pad-32 margin-hr">
-    <animated-title class="text-center" text="Talents"></animated-title>
-    <div class="flex-justify cards" [style.color]="color" *ngIf="talent.images">
-      <div class="card pad-16 margin-16">
-        <img [src]="getImage(talent.images.combat1)" alt="" />
-        <div class="name">{{ talent.combat1.name }}</div>
-        <div class="effect">{{ talent.combat1.info }}</div>
-      </div>
-      <div class="card pad-16 margin-16">
-        <img [src]="getImage(talent.images.combat2)" alt="" />
-        <div class="name">{{ talent.combat2.name }}</div>
-        <div class="effect">{{ talent.combat2.info }}</div>
-        <!-- <div>{{ talent.combat2.description }}</div> -->
-      </div>
-      <div class="card pad-16 margin-16">
-        <img [src]="getImage(talent.images.combat3)" alt="" />
-        <div class="name">{{ talent.combat3.name }}</div>
-        <div class="effect">{{ talent.combat3.info }}</div>
-        <!-- <div>{{ talent.combat3.description }}</div> -->
-      </div>
-      <div
-        class="card pad-16 margin-16"
-        *ngIf="talent.combatsp && talent.images.combatsp"
-      >
-        <img [src]="getImage(talent.images.combatsp)" alt="" />
-        <div class="name">{{ talent.combatsp.name }}</div>
-        <div class="effect">{{ talent.combatsp.info }}</div>
-      </div>
-
-      <div class="card pad-16 margin-16">
-        <img [src]="getImage(talent.images.passive1)" alt="" />
-        <div class="name">{{ talent.passive1.name }}</div>
-        <div class="effect">{{ talent.passive1.info }}</div>
-      </div>
-      <div class="card pad-16 margin-16">
-        <img [src]="getImage(talent.images.passive2)" alt="" />
-        <div class="name">{{ talent.passive2.name }}</div>
-        <div class="effect">{{ talent.passive2.info }}</div>
-      </div>
-      <div
-        class="card pad-16 margin-16"
-        *ngIf="talent.passive3 && talent.images.passive3"
-      >
-        <img [src]="getImage(talent.images.passive3)" alt="" />
-        <div class="name">{{ talent.passive3.name }}</div>
-        <div class="effect">{{ talent.passive3.info }}</div>
-      </div>
-      <div class="card pad-16 margin-16" *ngIf="talent.passive4">
-        <div class="name">{{ talent.passive4.name }}</div>
-        <div class="effect">{{ talent.passive4.info }}</div>
-      </div>
-    </div>
+  <div class="card info-card expand">
+    <div class="info-card-title pad-32">Description</div>
+    <div class="info-card-data pad-32">{{ character.description }}</div>
   </div>
 
-  <!-- ASCENSION COSTS -->
-  <div class="cover pad-32 margin-hr">
-    <animated-title class="text-center" text="Ascension Costs"></animated-title>
-    <div class="chart" [style.color]="color">
-      <div
-        class="chart-row flex"
-        *ngFor="let entry of iterableObject(character.costs)"
-      >
-        <div class="chart-item">Ascension {{ entry[0] | slice : 6 }}:</div>
-        <div class="chart-item flex-center" *ngFor="let material of entry[1]">
-          <div class="count">{{ material.count }}</div>
-          <img class="material" [src]="materialImage(material.name)" alt="" />
+  <div class="card info-card">
+    <div class="info-card-title pad-32">{{ character.constellation }}</div>
+    <div class="info-card-data pad-32">
+      <div class="card-skill flex">
+        <div class="image-container">
+          <img [src]="constellation.images.c1" alt="" />
+        </div>
+        <div>
+          <div class="card-skill-title" [style.color]="color">
+            {{ constellation.c1.name }}
+          </div>
+          <div [innerHTML]="findStrong(constellation.c1.effect)"></div>
+        </div>
+      </div>
+      <hr class="card-line" />
+      <div class="card-skill flex">
+        <div class="image-container">
+          <img [src]="constellation.images.c2" alt="" />
+        </div>
+        <div>
+          <div class="card-skill-title" [style.color]="color">
+            {{ constellation.c2.name }}
+          </div>
+          <div [innerHTML]="findStrong(constellation.c2.effect)"></div>
+        </div>
+      </div>
+      <hr class="card-line" />
+      <div class="card-skill flex">
+        <div class="image-container">
+          <img [src]="constellation.images.c3" alt="" />
+        </div>
+        <div>
+          <div class="card-skill-title" [style.color]="color">
+            {{ constellation.c3.name }}
+          </div>
+          <div [innerHTML]="findStrong(constellation.c3.effect)"></div>
+        </div>
+      </div>
+      <hr class="card-line" />
+      <div class="card-skill flex">
+        <div class="image-container">
+          <img [src]="constellation.images.c4" alt="" />
+        </div>
+        <div>
+          <div class="card-skill-title" [style.color]="color">
+            {{ constellation.c4.name }}
+          </div>
+          <div [innerHTML]="findStrong(constellation.c4.effect)"></div>
+        </div>
+      </div>
+      <hr class="card-line" />
+      <div class="card-skill flex">
+        <div class="image-container">
+          <img [src]="constellation.images.c5" alt="" />
+        </div>
+        <div>
+          <div class="card-skill-title" [style.color]="color">
+            {{ constellation.c5.name }}
+          </div>
+          <div [innerHTML]="findStrong(constellation.c5.effect)"></div>
+        </div>
+      </div>
+      <hr class="card-line" />
+      <div class="card-skill flex">
+        <div class="image-container">
+          <img [src]="constellation.images.c6" alt="" />
+        </div>
+        <div>
+          <div class="card-skill-title" [style.color]="color">
+            {{ constellation.c6.name }}
+          </div>
+          <div [innerHTML]="findStrong(constellation.c6.effect)"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- TALENT COSTS -->
-  <div class="cover pad-32 margin-hr">
-    <animated-title class="text-center" text="talent costs"></animated-title>
-    <div class="chart pad-32" [style.color]="color">
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Portrait</div>
+    <div class="info-card-data image-container">
+      <img class="fit-image" [src]="character.images.cover2!" alt="" />
+    </div>
+  </div>
+
+  <div class="card info-card expand">
+    <div class="info-card-title pad-32">Combat Skills</div>
+    <div class="info-card-data pad-32">
+      <div class="card-skill flex">
+        <div class="image-container">
+          <img [src]="image(talent.images!.combat1)" alt="" />
+        </div>
+        <div>
+          <div class="card-skill-title" [style.color]="color">
+            {{ talent.combat1.name }}
+          </div>
+          <div [innerHTML]="findStrong(talent.combat1.info)"></div>
+        </div>
+      </div>
+      <hr class="card-line" />
+      <div class="card-skill flex">
+        <div class="image-container">
+          <img [src]="image(talent.images!.combat2)" alt="" />
+        </div>
+        <div>
+          <div class="card-skill-title" [style.color]="color">
+            {{ talent.combat2.name }}
+          </div>
+          <div [innerHTML]="findStrong(talent.combat2.info)"></div>
+          <div>
+            <i>{{ talent.combat2.description }}</i>
+          </div>
+        </div>
+      </div>
+      <hr class="card-line" />
+      <div class="card-skill flex">
+        <div class="image-container">
+          <img [src]="image(talent.images!.combat3)" alt="" />
+        </div>
+        <div>
+          <div class="card-skill-title" [style.color]="color">
+            {{ talent.combat3.name }}
+          </div>
+          <div [innerHTML]="findStrong(talent.combat3.info)"></div>
+          <div>
+            <i>{{ talent.combat3.description }}</i>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="talent.combatsp">
+        <hr class="card-line" />
+        <div class="card-skill flex">
+          <div class="image-container">
+            <img [src]="image(talent.images!.combatsp!)" alt="" />
+          </div>
+          <div>
+            <div class="card-skill-title" [style.color]="color">
+              {{ talent.combatsp.name }}
+            </div>
+            <div [innerHTML]="findStrong(talent.combatsp.info)"></div>
+            <div>
+              <i>{{ talent.combatsp.description }}</i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card info-card expand">
+    <div class="info-card-title pad-32">Passive Skills</div>
+    <div class="info-card-data pad-32">
+      <div class="card-skill flex">
+        <div class="image-container">
+          <img [src]="image(talent.images!.passive1)" alt="" />
+        </div>
+        <div>
+          <div class="card-skill-title" [style.color]="color">
+            {{ talent.passive1.name }}
+          </div>
+          <div [innerHTML]="findStrong(talent.passive1.info)"></div>
+        </div>
+      </div>
+      <hr class="card-line" />
+      <div class="card-skill flex">
+        <div class="image-container">
+          <img [src]="image(talent.images!.passive2)" alt="" />
+        </div>
+        <div>
+          <div class="card-skill-title" [style.color]="color">
+            {{ talent.passive2.name }}
+          </div>
+          <div [innerHTML]="findStrong(talent.passive2.info)"></div>
+        </div>
+      </div>
+      <hr class="card-line" />
+      <div class="card-skill flex">
+        <div class="image-container">
+          <img [src]="image(talent.images!.passive3!)" alt="" />
+        </div>
+        <div>
+          <div class="card-skill-title" [style.color]="color">
+            {{ talent.passive3!.name }}
+          </div>
+          <div [innerHTML]="findStrong(talent.passive3!.info)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Talent Cost</div>
+    <div class="info-card-data pad-32 text-center">
       <div
-        class="chart-row flex"
+        class="chart-flex"
         *ngFor="let entry of iterableObject(talent.costs)"
       >
-        <div class="chart-item">Level {{ entry[0] | slice : 3 }}:</div>
-        <div class="chart-item flex-center" *ngFor="let material of entry[1]">
-          <div class="count">{{ material.count }}</div>
+        <div class="cost-item">
+          <img
+            class="material"
+            [src]="image(character.images.namesideicon)"
+            alt=""
+          />
+          <div>Level {{ entry[0] | slice : 3 }}</div>
+        </div>
+        <div class="cost-item" *ngFor="let material of entry[1]">
           <img class="material" [src]="materialImage(material.name)" alt="" />
+          <div>{{ material.count }}</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- STATS CALCULATOR -->
-  <div class="cover pad-32">
-    <animated-title class="text-center" text="level stats"></animated-title>
-    <img class="image" [src]="character.images.cover1" alt="" loading="lazy" />
-    <div class="chart margin-hr pad-32" [style.color]="color">
-      <input
-        type="range"
-        max="90"
-        min="1"
-        value="80"
-        class="range"
-        #slider
-        (change)="levelStats(slider.value)"
-      />
-      <div class="flex-justify chart-row">
-        <div class="chart-item">Level: {{ stats.level }}</div>
-        <div class="chart-item">Ascension: {{ stats.ascension }}</div>
-        <div class="chart-item">HP: {{ stats.hp | number : "1.0-0" }}</div>
-        <div class="chart-item">
-          Attack: {{ stats.attack | number : "1.0-0" }}
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Ascension Cost</div>
+    <div class="info-card-data pad-32 text-center">
+      <div
+        *ngFor="let entry of iterableObject(character.costs)"
+        class="chart-flex"
+      >
+        <div class="cost-item">
+          <img
+            class="material"
+            [src]="image(character.images.namesideicon)"
+            alt=""
+          />
+          <div>Ascension {{ entry[0] | slice : 6 }}</div>
         </div>
-        <div class="chart-item">
-          Defense: {{ stats.defense | number : "1.0-0" }}
-        </div>
-        <div class="chart-item">
-          {{ character.substat }}:
-          {{
-            character.substat == "Elemental Mastery"
-              ? (stats.specialized | number : "1.0-0")
-              : (stats.specialized | percent)
-          }}
+        <div class="cost-item" *ngFor="let material of entry[1]">
+          <img class="material" [src]="materialImage(material.name)" alt="" />
+          <div>{{ material.count }}</div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- STATS CALCULATOR -->
+<!-- <div class="cover pad-32">
+  <img class="image" [src]="character.images.cover1" alt="" loading="lazy" />
+  <div class="chart margin-hr pad-32" [style.color]="color">
+    <input
+      type="range"
+      max="90"
+      min="1"
+      value="80"
+      class="range"
+      #slider
+      (change)="levelStats(slider.value)"
+    />
+    <div class="flex-justify chart-row">
+      <div class="chart-item">Level: {{ stats.level }}</div>
+      <div class="chart-item">Ascension: {{ stats.ascension }}</div>
+      <div class="chart-item">HP: {{ stats.hp | number : "1.0-0" }}</div>
+      <div class="chart-item">
+        Attack: {{ stats.attack | number : "1.0-0" }}
+      </div>
+      <div class="chart-item">
+        Defense: {{ stats.defense | number : "1.0-0" }}
+      </div>
+      <div class="chart-item">
+        {{ character.substat }}:
+        {{
+          character.substat == "Elemental Mastery"
+            ? (stats.specialized | number : "1.0-0")
+            : (stats.specialized | percent)
+        }}
+      </div>
+    </div>
+  </div>
+</div> -->

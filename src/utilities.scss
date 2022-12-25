@@ -1,7 +1,6 @@
 .flex {
   display: flex;
   align-items: center;
-  gap: 2px;
 }
 
 .flex-center {
@@ -32,6 +31,10 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }
 
 .flex-1 {
@@ -82,8 +85,9 @@
 .margin-32 {
   margin: 32px;
 }
-.margin-hr {
-  margin: 32px 0;
+
+.fit-image {
+  max-width: 100%;
 }
 
 .full-width {

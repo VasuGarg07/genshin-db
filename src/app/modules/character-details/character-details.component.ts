@@ -9,7 +9,7 @@ import {
 } from 'genshin-db';
 import { VisionColor } from 'src/app/helpers/enums';
 import { GenshinService } from 'src/app/services/genshin.service';
-import { Utils } from 'src/app/shared/utilties';
+import { Utils } from 'src/app/helpers/utilties';
 
 @Component({
   selector: 'app-character-details',
@@ -35,27 +35,22 @@ export class CharacterDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const data = this.genshin.getCharacter(this.charName);
-    const constellation = this.genshin.getConstellation(this.charName);
-    const talent = this.genshin.getTalent(this.charName);
-    if (data && constellation && talent) {
+    if (data) {
       this.character = data;
       this.color = Utils.elementColor(this.character.element);
-      this.constellation = constellation;
-      this.talent = talent;
+      this.constellation = this.genshin.getConstellation(this.charName)!;
+      this.talent = this.genshin.getTalent(this.charName)!;
       this.levelStats('80');
+      console.log(this.talent.costs);
     } else this.router.navigate(['/characters']);
   }
 
-  getImage(nameIcon: string) {
+  image(nameIcon: string) {
     return this.genshin.imageUrl(nameIcon);
   }
 
-  getLocalImage(folder: string, file: string, type: string) {
-    return `/assets/${folder}/${file.toLocaleLowerCase()}.${type}`;
-  }
-
-  matchesRegex(input: string, regex: RegExp): boolean {
-    return regex.test(input);
+  findStrong(string: string) {
+    return string.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   }
 
   materialImage(name: string) {
@@ -63,13 +58,13 @@ export class CharacterDetailsComponent implements OnInit {
     if (material) {
       return material.images.fandom
         ? material.images.fandom
-        : this.getImage(material.images.nameicon);
+        : this.genshin.imageUrl(material.images.nameicon);
     } else {
       return;
     }
   }
 
-  filter(key: string) {
+  searchCharacters(key: string) {
     this.router.navigate(['/characters', key]);
   }
 
@@ -83,5 +78,21 @@ export class CharacterDetailsComponent implements OnInit {
       parseInt(level)
     );
     stats && (this.stats = stats);
+  }
+
+  // vision(el: string) {
+  //   return Utils.visionIcon(el);
+  // }
+
+  // rarity(el: string) {
+  //   return Utils.starIcon(el);
+  // }
+
+  // weaponIcon(el: string) {
+  //   return Utils.weaponIcon(el);
+  // }
+
+  starRank(el: string) {
+    return '★'.repeat(parseInt(el));
   }
 }

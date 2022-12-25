@@ -1,3 +1,23 @@
-<div class="container">
-  <router-outlet></router-outlet>
+<div class="main-container">
+  <div class="top-nav flex">
+    <div class="logo" routerLink="/">
+      <img class="fit-image" src="/assets/logo.png" alt="" />
+    </div>
+    <span class="spacer"></span>
+    <div class="time">{{ time }}</div>
+  </div>
+  <div class="flex-container">
+    <div class="side-nav">
+      <div
+        class="nav-item"
+        *ngFor="let route of routes"
+        (click)="navigate(route)"
+      >
+        {{ route | titlecase }}
+      </div>
+    </div>
+    <div class="content-container spacer">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

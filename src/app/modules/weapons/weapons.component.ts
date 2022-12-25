@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Weapon } from 'genshin-db';
 import { GenshinService } from 'src/app/services/genshin.service';
-import { Utils } from 'src/app/shared/utilties';
+import { Utils } from 'src/app/helpers/utilties';
 
 @Component({
   selector: 'app-weapons',
@@ -45,19 +45,19 @@ export class WeaponsComponent implements OnInit {
     }
   }
 
-  getEnum(el: string) {
-    return Utils.elementColor(el);
-  }
-
-  background(name: string) {
-    return `/assets/quality-bg/${name}.png`;
-  }
-
   lookWeapon(name: string) {
     this.router.navigate(['/weapon', name]);
   }
 
-  getImage(nameIcon: string) {
-    return this.genshin.imageUrl(nameIcon);
+  weaponIcon(el: string) {
+    return Utils.weaponIcon(el);
+  }
+
+  rarity(el: string) {
+    return Utils.starIcon(el);
+  }
+
+  thumb(weapon: Weapon) {
+    return this.genshin.imageUrl(weapon.images.namegacha);
   }
 }

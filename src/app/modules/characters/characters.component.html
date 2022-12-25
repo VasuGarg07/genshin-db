@@ -1,14 +1,18 @@
-<div class="pad-32">
-  <animated-title [text]="title"></animated-title>
-</div>
-<div class="cards pad-32 flex-center">
+<div class="cards flex-center">
   <div
-    class="card pad-32"
+    class="card flex-justify"
     *ngFor="let character of characters"
-    [style.background]="background(character)"
-    [style.backgroundSize]="'contain'"
     (click)="lookCharacter(character.name)"
   >
-    <img [src]="character.images.icon" alt="" loading="lazy" />
+    <div class="card-info pad-32 flex-justify">
+      <div class="card-name flex">
+        <div>{{ character.name | uppercase }} |</div>
+        <img class="icon-margin" [src]="vision(character.element)" alt="" />
+      </div>
+      <img [src]="rarity(character.rarity)" alt="" />
+    </div>
+    <div class="image-container">
+      <img class="fit-image" [src]="thumb(character)" alt="" loading="lazy" />
+    </div>
   </div>
 </div>

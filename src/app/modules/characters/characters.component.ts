@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from 'genshin-db';
 import { GenshinService } from 'src/app/services/genshin.service';
-import { Utils } from 'src/app/shared/utilties';
+import { Utils } from 'src/app/helpers/utilties';
 
 @Component({
   selector: 'app-characters',
@@ -53,8 +53,15 @@ export class CharactersComponent implements OnInit {
     this.router.navigate(['/character', name]);
   }
 
-  background(character: Character) {
-    const hex = this.getEnum(character.element);
-    return `linear-gradient(0deg, ${hex}88, ${hex}66), url("/assets/quality-bg/1.png")`;
+  thumb(character: Character) {
+    return character.images.cover1!;
+  }
+
+  vision(el: string) {
+    return Utils.visionIcon(el);
+  }
+
+  rarity(el: string) {
+    return Utils.starIcon(el);
   }
 }

@@ -21,3 +21,11 @@ export enum AllRarity {
   'Two' = 2,
   'One' = 1,
 }
+
+export enum AssetFolders {
+  LANG = 'flags',
+  RAREBG = 'quality-bg',
+  STAR = 'rarity',
+  VISION = 'vision',
+  WEAPON = 'weapons',
+}
