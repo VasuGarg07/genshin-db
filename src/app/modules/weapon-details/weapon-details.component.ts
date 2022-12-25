@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Items, StatResult, Weapon } from 'genshin-db';
 import { RarityColor } from 'src/app/helpers/enums';
 import { GenshinService } from 'src/app/services/genshin.service';
-import { Utils } from 'src/app/shared/utilties';
+import { Utils } from 'src/app/helpers/utilties';
 
 @Component({
   selector: 'app-weapon-details',
@@ -11,7 +11,7 @@ import { Utils } from 'src/app/shared/utilties';
   styleUrls: ['./weapon-details.component.scss'],
 })
 export class WeaponDetailsComponent implements OnInit {
-  weaponData!: Weapon;
+  data!: Weapon;
   weaponName!: string;
   color!: RarityColor;
   stats: StatResult[] = [];
@@ -21,33 +21,59 @@ export class WeaponDetailsComponent implements OnInit {
     private genshin: GenshinService
   ) {
     const name = this.route.snapshot.paramMap.get('name');
-    if (name) {
-      this.weaponName = name;
-    } else {
-      this.router.navigate(['/weapons']);
-    }
+    name ? (this.weaponName = name) : this.router.navigate(['/weapons']);
   }
 
   ngOnInit() {
     const data = this.genshin.getWeapon(this.weaponName);
     if (data) {
-      this.weaponData = data;
-      this.color = Utils.rarityColor(this.weaponData.rarity);
-      this.levelStats();
-      console.log(this.weaponData, this.stats);
+      this.data = data;
+      this.color = Utils.rarityColor(this.data.rarity);
+      this.stat();
     } else this.router.navigate(['/weapons']);
   }
 
-  getImage(nameIcon: string) {
+  setEffectValue() {
+    const regex: RegExp = /^r\d+$/;
+    const refines: string[][] = [];
+    for (const key of Object.keys(this.data).filter((key) => regex.test(key))) {
+      refines.push(this.data[key as keyof Weapon] as string[]);
+    }
+
+    const result: string[] = [];
+    // this.effectValues = refines[0].map((_, i) => refines.map(array => array[i]).join('/'));
+    for (let i = 0; i < refines[0].length; i++) {
+      result.push(refines.map((array: string[]) => array[i]).join(' / '));
+    }
+
+    return this.data.effect.replace(
+      /{(\d+)}/g,
+      (_, index) => `<strong>${result[index]}</strong>`
+    );
+  }
+
+  stat() {
+    const levels = [1, 20, 40, 50, 60, 70, 80, 90];
+    levels.forEach((i) => {
+      this.stats.push(this.data.stats(i));
+      i > 1 && i < 90 && this.stats.push(this.data.stats(i, '+'));
+    });
+  }
+
+  starRank(el: string) {
+    return '★'.repeat(parseInt(el));
+  }
+
+  rarity(el: string) {
+    return Utils.starIcon(el);
+  }
+
+  image(nameIcon: string) {
     return this.genshin.imageUrl(nameIcon);
   }
 
-  getLocalImage(folder: string, file: string, type: string) {
-    return `/assets/${folder}/${file.toLocaleLowerCase()}.${type}`;
-  }
-
-  matchesRegex(input: string, regex: RegExp): boolean {
-    return regex.test(input);
+  findStrong(string: string) {
+    return string.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   }
 
   materialImage(name: string) {
@@ -55,33 +81,17 @@ export class WeaponDetailsComponent implements OnInit {
     if (material) {
       return material.images.fandom
         ? material.images.fandom
-        : this.getImage(material.images.nameicon);
+        : this.genshin.imageUrl(material.images.nameicon);
     } else {
       return;
     }
   }
 
-  filter(key: string) {
+  searchWeapons(key: string) {
     this.router.navigate(['/weapons', key]);
   }
 
   iterableObject(obj: any): [string, Items[]][] {
     return Object.entries(obj);
-  }
-
-  levelStats() {
-    for (let level = 1; level <= 90; level++) {
-      const stats = this.genshin.getWeaponStats(this.weaponName, level);
-      stats && this.stats.push(stats);
-      if (level == 20 || (level >= 40 && level <= 80 && !(level % 10))) {
-        const ascended = this.genshin.getWeaponStats(
-          this.weaponName,
-          level,
-          true
-        );
-        ascended && this.stats.push(ascended);
-      }
-    }
-    console.log(this.stats);
   }
 }

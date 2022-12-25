@@ -34,83 +34,8 @@
       }
     }
   }
-}
 
-.cover {
-  border-radius: 3em;
-  box-shadow: rgb(0, 0, 0) 0px 5px 15px;
-  backdrop-filter: blur(8px);
-  background-color: rgba(0, 0, 0, 0.2);
-  column-gap: 4em;
-  .key {
-    margin: 20px;
-    font-family: "Lora", serif;
-    font-size: 24px;
-    line-height: 1.1;
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    .icon {
-      width: 40px;
-    }
-    span {
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .link {
-      font-size: 12px;
-      text-transform: lowercase;
-    }
-    &:hover,
-    &:active {
-      .link {
-        cursor: pointer;
-        text-decoration: underline;
-      }
-    }
-  }
-  .cards {
-    align-items: stretch;
-    flex-wrap: wrap;
-    margin-top: 16px;
-    .card {
-      width: calc(100% / 3 - 72px);
-      border: 4px solid;
-      border-radius: 24px;
-      font-family: "Plus Jakarta Sans", sans-serif;
-      line-height: 1.5;
-      img {
-        display: flex;
-        margin: auto;
-      }
-      .name {
-        text-transform: uppercase;
-        text-align: center;
-        font-size: 1.5rem;
-      }
-      .effect {
-        color: #dfdfdf;
-        font-size: 1.2rem;
-      }
-    }
-  }
-  .chart {
-    margin: 32px auto 0;
-    width: 80%;
-    border: 4px solid;
-    border-radius: 24px;
-    .chart-row {
-      font-family: "Lora", serif;
-      font-size: 20px;
-      line-height: 1.1;
-      color: #f4f4f4;
-      text-align: center;
-      .chart-item {
-        width: calc(100% / 6);
-        .material {
-          max-width: 40%;
-        }
-      }
-    }
+  .stat-value {
+    width: calc(100% / 6);
   }
 }

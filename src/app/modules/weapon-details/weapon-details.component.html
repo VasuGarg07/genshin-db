@@ -1,101 +1,101 @@
-<div class="container pad-32">
-  <!-- PROFILE -->
-  <div class="cover pad-32">
-    <animated-title class="text-center" [text]="weaponName"></animated-title>
-    <div class="flex">
-      <div class="flex-3">
-        <div class="key">
-          <span [style.color]="color">{{ weaponData.description }}</span>
-        </div>
-        <div class="key" (click)="filter(weaponData.rarity)">
-          Rarity
-          <span>
-            <img
-              [src]="getLocalImage('rarity', weaponData.rarity, 'png')"
-              alt=""
-              loading="lazy"
-            />
-          </span>
-          <span class="link">see more</span>
-        </div>
+<div class="splash flex">
+  <div class="flex-3 pad-32">
+    <div class="title" [style.color]="color">{{ data.name }}</div>
+    <img [src]="rarity(data.rarity)" alt="" />
+  </div>
+  <div class="flex-1 image-container">
+    <img class="fit-image" [src]="image(data.images.namegacha)" alt="" />
+  </div>
+</div>
 
-        <div class="key" (click)="filter(weaponData.weapontype)">
-          Type
-          <span [style.color]="color">
-            {{ weaponData.weapontype }}
-            <img
-              class="icon"
-              [src]="getLocalImage('weapons', weaponData.weapontype, 'png')"
-              alt=""
-              loading="lazy"
-            />
+<div class="cards flex-center">
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Weapon</div>
+    <div class="info-card-data pad-32">
+      <ul>
+        <li>Base Attack: {{ data.baseatk }}</li>
+        <li>
+          Star Rank:
+          <span class="nav-link" [style.color]="color">
+            {{ data.rarity }} {{ starRank(data.rarity) }}
           </span>
-          <span class="link">see more</span>
-        </div>
-        <div class="key" (click)="filter(weaponData.substat)">
-          Substat
-          <span [style.color]="color">{{ weaponData.substat }}</span>
-          <span class="link">see more</span>
-        </div>
-
-        <div class="key">
-          Released in version
-          <span [style.color]="color">{{ weaponData.version }}.</span>
-        </div>
-      </div>
-      <div class="flex-1">
-        <img
-          class="image"
-          [src]="getImage(weaponData.images.namegacha)"
-          alt=""
-          loading="lazy"
-        />
-      </div>
+        </li>
+        <li>
+          Primary Attribute:
+          <span class="nav-link" [style.color]="color">{{ data.substat }}</span>
+        </li>
+        <li>
+          Primary Attribute Base Value:
+          {{ data.subvalue }}
+        </li>
+        <li>
+          Weapon:
+          <span class="nav-link" [style.color]="color">{{
+            data.weapontype
+          }}</span>
+        </li>
+        <li>Weapon Material: {{ data.weaponmaterialtype }}</li>
+        <li *ngIf="data.url && data.url.fandom">
+          <a
+            class="nav-link"
+            [href]="data.url.fandom"
+            target="_blank"
+            [style.color]="color"
+          >
+            Know More about {{ data.name }} <mat-icon>open_in_new</mat-icon></a
+          >
+        </li>
+      </ul>
     </div>
   </div>
 
-  <!-- ASCENSION COSTS -->
-  <div class="cover pad-32 margin-hr">
-    <animated-title class="text-center" text="Ascension Costs"></animated-title>
-    <div class="chart pad-32" [style.color]="color">
-      <div
-        class="chart-row flex-center"
-        *ngFor="let entry of iterableObject(weaponData.costs)"
-      >
-        <div class="flex-1">Ascension {{ entry[0] | slice : 6 }}:</div>
-        <div class="flex-center flex-1" *ngFor="let material of entry[1]">
-          <div class="count">{{ material.count }}</div>
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Description</div>
+    <div class="info-card-data pad-32">{{ data.description }}</div>
+  </div>
+
+  <div class="card info-card expand">
+    <div class="info-card-title pad-32">Story</div>
+    <div class="info-card-data pad-32">{{ data.story }}</div>
+  </div>
+
+  <div class="card info-card expand">
+    <div class="info-card-title pad-32">{{ data.effectname }}</div>
+    <div class="info-card-data pad-32" [innerHTML]="setEffectValue()"></div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Ascension Cost</div>
+    <div class="info-card-data pad-32 text-center">
+      <div *ngFor="let entry of iterableObject(data.costs)" class="chart-flex">
+        <div class="cost-item">
+          <img class="material" [src]="image(data.images.nameicon)" alt="" />
+          <div>Ascension {{ entry[0] | slice : 6 }}</div>
+        </div>
+        <div class="cost-item" *ngFor="let material of entry[1]">
           <img class="material" [src]="materialImage(material.name)" alt="" />
+          <div>{{ material.count }}</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- STATS CALCULATOR -->
-  <div class="cover pad-32">
-    <animated-title class="text-center" text="level stats"></animated-title>
-    <div class="chart margin-hr pad-32 text-center" [style.color]="color">
-      <div class="flex-center chart-row">
-        <div class="flex-1">Level</div>
-        <div class="flex-1">Attack</div>
-        <div class="flex-1">{{ weaponData.substat }}</div>
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Weapon Stats</div>
+    <div class="info-card-data pad-32 text-center">
+      <div class="flex">
+        <div class="stat-value">Level</div>
+        <div class="stat-value">Ascension</div>
+        <div class="stat-value">Attack</div>
+        <div class="stat-value">{{ data.substat }}</div>
       </div>
-      <hr />
-      <div
-        class="flex-center chart-row"
-        *ngFor="let stat of stats; let i = index"
-      >
-        <div class="flex-1">{{ stat.level }}</div>
-        <div class="flex-1">{{ stat.attack | number : "1.0-0" }}</div>
-        <div
-          class="flex-1"
-          *ngIf="
-            i == 0 || stat.specialized !== stats[i - 1].specialized;
-            else dash
-          "
-        >
+      <div class="flex" *ngFor="let stat of stats">
+        <div class="stat-value">{{ stat.level }}</div>
+        <div class="stat-value">{{ stat.ascension }}</div>
+        <div class="stat-value">{{ stat.attack | number : "1.0-0" }}</div>
+        <div class="stat-value">
           {{
-            weaponData.substat == "Elemental Mastery"
+            data.substat == "Elemental Mastery"
               ? (stat.specialized | number : "1.0-0")
               : (stat.specialized | percent)
           }}
@@ -104,7 +104,3 @@
     </div>
   </div>
 </div>
-
-<ng-template #dash>
-  <div class="flex-1"></div>
-</ng-template>

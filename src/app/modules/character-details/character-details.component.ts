@@ -23,7 +23,6 @@ export class CharacterDetailsComponent implements OnInit {
   constellation!: Constellation;
   talent!: Talent;
   stats: StatResult[] = [];
-  // TODO: Character Level Stats & Talent Stats
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -41,7 +40,6 @@ export class CharacterDetailsComponent implements OnInit {
       this.constellation = this.genshin.getConstellation(this.charName)!;
       this.talent = this.genshin.getTalent(this.charName)!;
       this.stat();
-      console.log(this.talent.costs);
     } else this.router.navigate(['/characters']);
   }
 
@@ -79,18 +77,6 @@ export class CharacterDetailsComponent implements OnInit {
       i > 1 && i < 90 && this.stats.push(this.character.stats(i, '+'));
     });
   }
-
-  // vision(el: string) {
-  //   return Utils.visionIcon(el);
-  // }
-
-  // rarity(el: string) {
-  //   return Utils.starIcon(el);
-  // }
-
-  // weaponIcon(el: string) {
-  //   return Utils.weaponIcon(el);
-  // }
 
   starRank(el: string) {
     return '★'.repeat(parseInt(el));

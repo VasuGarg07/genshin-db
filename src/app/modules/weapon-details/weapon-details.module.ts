@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { WeaponDetailsRoutingModule } from './weapon-details-routing.module';
 import { WeaponDetailsComponent } from './weapon-details.component';
-import { AnimatedTitleModule } from 'src/app/shared/animated-title/animated-title.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [WeaponDetailsComponent],
-  imports: [CommonModule, WeaponDetailsRoutingModule, AnimatedTitleModule],
+  imports: [CommonModule, WeaponDetailsRoutingModule, MatIconModule],
 })
 export class WeaponDetailsModule {}
