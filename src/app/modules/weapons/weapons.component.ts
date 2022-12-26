@@ -11,38 +11,13 @@ import { Utils } from 'src/app/helpers/utilties';
 })
 export class WeaponsComponent implements OnInit {
   weapons!: Weapon[];
-  title!: string;
 
-  // TODO: FILTERS
-  constructor(
-    private genshin: GenshinService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
-    const key = this.route.snapshot.paramMap.get('name');
-    const weapons = key && this.genshin.filterWeapons(key);
-    if (typeof weapons === 'object' && Array.isArray(weapons)) {
-      this.weapons = weapons.filter((w: Weapon) => {
-        return w.costs.ascend5;
-      });
-    } else if (weapons && typeof weapons === 'object') {
-      this.weapons = [weapons].filter((w: Weapon) => {
-        return w.costs.ascend5;
-      });
-    }
-    this.title = key
-      ? parseInt(key)
-        ? key + '* weapons'
-        : key + ' weapons'
-      : 'weapons';
-  }
+  constructor(private genshin: GenshinService, private router: Router) {}
 
   ngOnInit(): void {
-    if (!this.weapons || !this.weapons.length) {
-      this.weapons = this.genshin.getAllWeapons().filter((w: Weapon) => {
-        return w.costs.ascend5;
-      });
-    }
+    this.weapons = this.genshin.getAllWeapons().filter((w: Weapon) => {
+      return w.costs.ascend5;
+    });
   }
 
   lookWeapon(name: string) {
@@ -52,10 +27,6 @@ export class WeaponsComponent implements OnInit {
   background(el: string) {
     const img = Utils.rarityBg(el);
     return `url('${img}')`;
-  }
-
-  rarity(el: string) {
-    return Utils.starIcon(el);
   }
 
   thumb(weapon: Weapon) {

@@ -61,8 +61,8 @@ export class GenshinService {
     return genshindb.weapons(name)?.stats(level, ascended);
   }
 
-  getAll5Artifacts() {
-    return genshindb.artifacts('5', {
+  getAllArtifacts() {
+    return genshindb.artifacts('names', {
       matchCategories: true,
       verboseCategories: true,
     });

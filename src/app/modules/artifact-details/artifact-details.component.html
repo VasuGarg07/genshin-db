@@ -1,0 +1,148 @@
+<div class="cards flex-center">
+  <div class="card info-card expand">
+    <div class="info-card-title pad-32">{{ data.name }}</div>
+    <div class="info-card-data flex-justify">
+      <div class="image-container">
+        <img class="fit-image" [src]="image(data.images.nameflower!)" alt="" />
+      </div>
+      <div class="image-container">
+        <img class="fit-image" [src]="image(data.images.nameplume!)" alt="" />
+      </div>
+      <div class="image-container">
+        <img class="fit-image" [src]="image(data.images.namesands!)" alt="" />
+      </div>
+      <div class="image-container">
+        <img class="fit-image" [src]="image(data.images.namegoblet!)" alt="" />
+      </div>
+      <div class="image-container">
+        <img class="fit-image" [src]="image(data.images.namecirclet)" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Set Information</div>
+    <div class="info-card-data pad-32">
+      <ul>
+        <li>
+          Highest Star Rank:
+          <span>
+            {{ data.rarity[data.rarity.length - 1] }}
+            {{ starRank(data.rarity[data.rarity.length - 1]) }}
+          </span>
+        </li>
+        <li>2-pcs Set: {{ data["2pc"] }}</li>
+        <li>4-pcs Set: {{ data["4pc"] }}</li>
+        <li>Released in Version {{ data.version }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Set Pieces</div>
+    <div class="info-card-data pad-32">
+      <ul>
+        <li>{{ data.flower!.relictype }}: {{ data.flower!.name }}</li>
+        <li>{{ data.plume!.relictype }}: {{ data.plume!.name }}</li>
+        <li>{{ data.sands!.relictype }}: {{ data.sands!.name }}</li>
+        <li>{{ data.goblet!.relictype }}: {{ data.goblet!.name }}</li>
+        <li>{{ data.circlet.relictype }}: {{ data.circlet.name }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Description</div>
+    <div class="info-card-data pad-32">
+      <div class="flex-center image-container">
+        <img class="fit-image" [src]="image(data.images.nameflower!)" alt="" />
+      </div>
+      <ul>
+        <li>Name: {{ data.flower!.name }}</li>
+        <li>Relic: {{ data.flower!.relictype }}</li>
+        <li>{{ data.flower!.description }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Story</div>
+    <div class="info-card-data pad-32" [innerHTML]="data.flower!.story"></div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Description</div>
+    <div class="info-card-data pad-32">
+      <div class="flex-center image-container">
+        <img class="fit-image" [src]="image(data.images.nameplume!)" alt="" />
+      </div>
+      <ul>
+        <li>Name: {{ data.plume!.name }}</li>
+        <li>Relic: {{ data.plume!.relictype }}</li>
+        <li>{{ data.plume!.description }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Story</div>
+    <div class="info-card-data pad-32" [innerHTML]="data.plume!.story"></div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Description</div>
+    <div class="info-card-data pad-32">
+      <div class="flex-center image-container">
+        <img class="fit-image" [src]="image(data.images.namesands!)" alt="" />
+      </div>
+      <ul>
+        <li>Name: {{ data.sands!.name }}</li>
+        <li>Relic: {{ data.sands!.relictype }}</li>
+        <li>{{ data.sands!.description }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Story</div>
+    <div class="info-card-data pad-32" [innerHTML]="data.sands!.story"></div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Description</div>
+    <div class="info-card-data pad-32">
+      <div class="flex-center image-container">
+        <img class="fit-image" [src]="image(data.images.namegoblet!)" alt="" />
+      </div>
+      <ul>
+        <li>Name: {{ data.goblet!.name }}</li>
+        <li>Relic: {{ data.goblet!.relictype }}</li>
+        <li>{{ data.goblet!.description }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Story</div>
+    <div class="info-card-data pad-32" [innerHTML]="data.goblet!.story"></div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Description</div>
+    <div class="info-card-data pad-32">
+      <div class="flex-center image-container">
+        <img class="fit-image" [src]="image(data.images.namecirclet)" alt="" />
+      </div>
+      <ul>
+        <li>Name: {{ data.circlet.name }}</li>
+        <li>Relic: {{ data.circlet.relictype }}</li>
+        <li>{{ data.circlet.description }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Story</div>
+    <div class="info-card-data pad-32" [innerHTML]="data.circlet.story"></div>
+  </div>
+</div>

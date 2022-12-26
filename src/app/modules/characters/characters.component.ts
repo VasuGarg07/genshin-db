@@ -11,38 +11,13 @@ import { Utils } from 'src/app/helpers/utilties';
 })
 export class CharactersComponent implements OnInit {
   characters!: Character[];
-  title!: string;
 
-  // TODO: FILTERS
-  constructor(
-    private genshin: GenshinService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
-    const key = this.route.snapshot.paramMap.get('name');
-    const chars = key && this.genshin.filterCharacters(key);
-    if (typeof chars === 'object' && Array.isArray(chars)) {
-      this.characters = chars.filter((char) => {
-        return char.element !== 'None';
-      });
-    } else if (chars && typeof chars === 'object') {
-      this.characters = [chars].filter((char) => {
-        return char.element !== 'None';
-      });
-    }
-    this.title = key
-      ? parseInt(key)
-        ? key + '* characters'
-        : key + ' characters'
-      : 'Characters';
-  }
+  constructor(private genshin: GenshinService, private router: Router) {}
 
   ngOnInit(): void {
-    if (!this.characters || !this.characters.length) {
-      this.characters = this.genshin.getAllCharacters().filter((char) => {
-        return char.element !== 'None';
-      });
-    }
+    this.characters = this.genshin.getAllCharacters().filter((char) => {
+      return char.element !== 'None';
+    });
   }
 
   getEnum(el: string) {

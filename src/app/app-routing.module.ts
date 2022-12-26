@@ -3,14 +3,21 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'characters',
+    path: 'artifacts',
     loadChildren: () =>
-      import('./modules/characters/characters.module').then(
-        (m) => m.CharactersModule
+      import('./modules/artifacts/artifacts.module').then(
+        (m) => m.ArtifactsModule
       ),
   },
   {
-    path: 'characters/:name',
+    path: 'artifact/:name',
+    loadChildren: () =>
+      import('./modules/artifact-details/artifact-details.module').then(
+        (m) => m.ArtifactDetailsModule
+      ),
+  },
+  {
+    path: 'characters',
     loadChildren: () =>
       import('./modules/characters/characters.module').then(
         (m) => m.CharactersModule
@@ -25,11 +32,6 @@ const routes: Routes = [
   },
   {
     path: 'weapons',
-    loadChildren: () =>
-      import('./modules/weapons/weapons.module').then((m) => m.WeaponsModule),
-  },
-  {
-    path: 'weapons/:name',
     loadChildren: () =>
       import('./modules/weapons/weapons.module').then((m) => m.WeaponsModule),
   },
