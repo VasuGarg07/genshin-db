@@ -31,6 +31,18 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'domains',
+    loadChildren: () =>
+      import('./modules/domains/domains.module').then((m) => m.DomainsModule),
+  },
+  {
+    path: 'domain/:name',
+    loadChildren: () =>
+      import('./modules/domain-detail/domain-detail.module').then(
+        (m) => m.DomainDetailModule
+      ),
+  },
+  {
     path: 'weapons',
     loadChildren: () =>
       import('./modules/weapons/weapons.module').then((m) => m.WeaponsModule),

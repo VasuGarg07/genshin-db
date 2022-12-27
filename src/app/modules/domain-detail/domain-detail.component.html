@@ -1,0 +1,85 @@
+<div class="cards flex-center">
+  <div class="card info-card">
+    <div class="info-card-title pad-32">{{ data.name }}</div>
+    <div class="info-card-data pad-32">
+      <ul>
+        <li>Domain Type: {{ data.domaintype }}</li>
+        <li>Entrance: {{ data.domainentrance }}</li>
+        <li *ngIf="data.daysofweek">
+          Available on:
+          <span *ngFor="let day of data.daysofweek">
+            {{ day | uppercase | slice : 0 : 3 }}
+          </span>
+        </li>
+        <li>Region: {{ data.region }}</li>
+        <li>Unlocked at Level: {{ data.unlockrank }}</li>
+        <li>Recommended Level: {{ data.recommendedlevel }}</li>
+        <li>
+          Recommended Characters:
+          <img
+            *ngFor="let element of data.recommendedelements"
+            [src]="vision(element)"
+            alt=""
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Image</div>
+    <div class="image-container">
+      <img
+        class="domain-image"
+        [src]="image(data.images.namepic)"
+        alt=""
+        loading="lazy"
+      />
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Description</div>
+    <div class="info-card-data pad-32">{{ data.description }}</div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Disorder</div>
+    <div class="info-card-data pad-32">
+      <ul>
+        <li *ngFor="let order of data.disorder">{{ order }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div
+    class="card info-card expand"
+    *ngIf="data.monsterlist && data.monsterlist.length"
+  >
+    <div class="info-card-title pad-32">Enemies</div>
+    <div class="info-card-data pad-32 flex-stretch materials text-center">
+      <div class="flex-column" *ngFor="let enemy of data.monsterlist">
+        <img class="material" [src]="enemyImage(enemy)" alt="" loading="lazy" />
+        <div>{{ enemy }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="card info-card expand"
+    *ngIf="data.rewardpreview && data.rewardpreview.length"
+  >
+    <div class="info-card-title pad-32">Rewards</div>
+    <div class="info-card-data pad-32 flex-stretch materials text-center">
+      <div class="flex-column" *ngFor="let reward of data.rewardpreview">
+        <img
+          class="material"
+          [src]="materialImage(reward.name)"
+          alt=""
+          loading="lazy"
+        />
+        <div>{{ reward.name }}</div>
+      </div>
+    </div>
+  </div>
+</div>

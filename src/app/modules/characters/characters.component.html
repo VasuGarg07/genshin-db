@@ -12,7 +12,12 @@
       <img [src]="rarity(character.rarity)" alt="" />
     </div>
     <div class="image-container">
-      <img class="fit-image" [src]="thumb(character)" alt="" loading="lazy" />
+      <img
+        class="fit-image"
+        [src]="character.images.cover1!"
+        alt=""
+        loading="lazy"
+      />
     </div>
   </div>
 </div>

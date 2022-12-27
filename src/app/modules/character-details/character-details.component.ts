@@ -52,14 +52,10 @@ export class CharacterDetailsComponent implements OnInit {
   }
 
   materialImage(name: string) {
-    const material = this.genshin.getMaterial(name);
-    if (material) {
-      return material.images.fandom
-        ? material.images.fandom
-        : this.genshin.imageUrl(material.images.nameicon);
-    } else {
-      return;
-    }
+    const material = this.genshin.getMaterial(name)!;
+    return material.images.fandom
+      ? material.images.fandom
+      : this.image(material.images.nameicon);
   }
 
   searchCharacters(key: string) {

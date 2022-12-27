@@ -25,7 +25,6 @@ export class ArtifactDetailsComponent implements OnInit {
   ngOnInit(): void {
     const data = this.genshin.getArtifact(this.artiName);
     if (data) {
-      console.log(data);
       this.data =
         typeof data == 'object' && Array.isArray(data) ? data[0] : data;
     } else this.router.navigate(['/artifacts']);

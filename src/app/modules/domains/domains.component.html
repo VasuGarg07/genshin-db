@@ -1,0 +1,19 @@
+<div class="cards flex-center">
+  <div
+    class="card"
+    *ngFor="let domain of domains"
+    (click)="lookup(domain.name)"
+  >
+    <div class="image-container">
+      <img
+        class="image fit-image"
+        [src]="thumb(domain)"
+        alt=""
+        loading="lazy"
+      />
+    </div>
+    <div class="card-name pad-16 text-center">
+      {{ domain.name | uppercase }}
+    </div>
+  </div>
+</div>

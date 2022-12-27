@@ -28,10 +28,6 @@ export class CharactersComponent implements OnInit {
     this.router.navigate(['/character', name]);
   }
 
-  thumb(character: Character) {
-    return character.images.cover1!;
-  }
-
   vision(el: string) {
     return Utils.visionIcon(el);
   }
