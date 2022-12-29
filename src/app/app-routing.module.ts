@@ -55,6 +55,18 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'foods',
+    loadChildren: () =>
+      import('./modules/foods/foods.module').then((m) => m.FoodsModule),
+  },
+  {
+    path: 'food/:name',
+    loadChildren: () =>
+      import('./modules/food-details/food-details.module').then(
+        (m) => m.FoodDetailsModule
+      ),
+  },
+  {
     path: 'geographies',
     loadChildren: () =>
       import('./modules/geographies/geographies.module').then(

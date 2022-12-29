@@ -1,0 +1,6 @@
+.rewards {
+  gap: 16px;
+  .reward {
+    width: calc((100% / 8) - 16px);
+  }
+}

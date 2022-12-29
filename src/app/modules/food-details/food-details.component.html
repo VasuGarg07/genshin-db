@@ -1,0 +1,49 @@
+<div class="cards flex-center">
+  <div class="card info-card expand">
+    <div class="info-card-title pad-32">{{ data.name }}</div>
+    <div class="info-card-data pad-32 flex">
+      <div class="flex-2">
+        <ul>
+          <li>Quality: {{ data.rarity }} {{ starRank(data.rarity) }}</li>
+          <li>Category: {{ data.foodfilter }}</li>
+          <li>Type: {{ data.foodtype | titlecase }}</li>
+          <li>{{ data.effect }}</li>
+        </ul>
+      </div>
+      <div class="flex-1 image-container flex-center">
+        <img class="adjust-image" [src]="thumb(data)" alt="" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Description</div>
+    <div class="info-card-data pad-32">{{ data.description }}</div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Effects</div>
+    <div class="info-card-data pad-32">
+      <ul>
+        <li *ngIf="data.normal">Normal: {{ data.normal.effect }}</li>
+        <li *ngIf="data.delicious">Delicious: {{ data.delicious.effect }}</li>
+        <li *ngIf="data.suspicious">
+          Suspicious: {{ data.suspicious.effect }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card info-card expand">
+    <div class="info-card-title pad-32">Ingredients</div>
+    <div class="info-card-data pad-32 flex-stretch rewards text-center">
+      <div
+        class="flex-column reward"
+        *ngFor="let ingredient of data.ingredients"
+      >
+        <img class="fit-image" [src]="materialImage(ingredient.name)" alt="" />
+        <div>{{ ingredient.name }} x {{ ingredient.count }}</div>
+      </div>
+    </div>
+  </div>
+</div>

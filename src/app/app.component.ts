@@ -16,6 +16,7 @@ export class AppComponent {
     'artifacts',
     'domains',
     'enemies',
+    'Foods',
     'geographies',
   ];
 

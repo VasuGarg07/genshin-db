@@ -188,4 +188,22 @@ export class GenshinService {
       verboseCategories: true,
     });
   }
+
+  getAllFood() {
+    return genshindb.foods('names', {
+      matchCategories: true,
+      verboseCategories: true,
+    });
+  }
+
+  filterFood(name: string) {
+    return genshindb.foods(name, {
+      matchCategories: true,
+      verboseCategories: true,
+    });
+  }
+
+  getFood(name: string) {
+    return genshindb.foods(name);
+  }
 }
