@@ -1,39 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Domain, Enemy, Material } from 'genshin-db';
+import { Enemy } from 'genshin-db';
 import { Utils } from 'src/app/helpers/utilties';
 import { GenshinService } from 'src/app/services/genshin.service';
 
 @Component({
-  selector: 'app-domain-detail',
-  templateUrl: './domain-detail.component.html',
-  styleUrls: ['./domain-detail.component.scss'],
+  selector: 'app-enemy-details',
+  templateUrl: './enemy-details.component.html',
+  styleUrls: ['./enemy-details.component.scss'],
 })
-export class DomainDetailComponent implements OnInit {
-  data!: Domain;
-  domName!: string;
+export class EnemyDetailsComponent implements OnInit {
+  data!: Enemy;
+  name!: string;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private genshin: GenshinService
   ) {
     const name = this.route.snapshot.paramMap.get('name');
-    name ? (this.domName = name) : this.router.navigate(['/domains']);
+    name ? (this.name = name) : this.router.navigate(['/enemies']);
   }
 
   ngOnInit(): void {
-    const data = this.genshin.getDomain(this.domName);
-    data ? (this.data = data) : this.router.navigate(['/domains']);
+    const data = this.genshin.getEnemy(this.name);
+    data ? (this.data = data) : this.router.navigate(['/enemies']);
     console.log(data);
   }
 
   image(nameIcon: string) {
     return this.genshin.imageUrl(nameIcon);
-  }
-
-  enemyImage(name: string) {
-    const enemy: Enemy = this.genshin.getEnemy(name)!;
-    return this.image(enemy.images.nameicon);
   }
 
   materialImage(name: string) {
@@ -45,13 +40,11 @@ export class DomainDetailComponent implements OnInit {
     } else {
       const artifact = this.genshin.getArtifact(name)!;
       return typeof artifact == 'object' && Array.isArray(artifact)
-        ? this.image(artifact[0].images.nameflower!)
-        : this.image(artifact.images.nameflower!);
+        ? this.image(
+            artifact[0].images.nameflower || artifact[0].images.namecirclet
+          )
+        : this.image(artifact.images.nameflower || artifact.images.namecirclet);
     }
-  }
-
-  vision(el: string) {
-    return Utils.visionIcon(el);
   }
 
   starRank(el: string) {

@@ -1,0 +1,48 @@
+<div class="cards flex-center">
+  <div class="card info-card">
+    <div class="info-card-title pad-32">{{ data.name }}</div>
+    <div class="info-card-data pad-32">
+      <ul>
+        <li>Special Name: {{ data.specialname }}</li>
+        <li>Category: {{ data.category }}</li>
+        <li>Enemy Type: {{ data.enemytype | titlecase }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card info-card">
+    <div class="info-card-title pad-32">Image</div>
+    <div class="image-container flex-center">
+      <img
+        class="domain-image"
+        [src]="image(data.images.nameicon)"
+        alt=""
+        loading="lazy"
+      />
+    </div>
+  </div>
+
+  <div class="card info-card expand">
+    <div class="info-card-title pad-32">Description</div>
+    <div class="info-card-data pad-32">{{ data.description }}</div>
+  </div>
+
+  <div
+    class="card info-card expand"
+    *ngIf="data.rewardpreview && data.rewardpreview.length"
+  >
+    <div class="info-card-title pad-32">Rewards</div>
+    <div class="info-card-data pad-32 flex-stretch rewards text-center">
+      <div class="flex-column reward" *ngFor="let reward of data.rewardpreview">
+        <img
+          class="fit-image"
+          [src]="materialImage(reward.name)"
+          alt=""
+          loading="lazy"
+        />
+        <div>{{ reward.name }}</div>
+        <div *ngIf="reward.rarity">{{ starRank(reward.rarity) }}</div>
+      </div>
+    </div>
+  </div>
+</div>

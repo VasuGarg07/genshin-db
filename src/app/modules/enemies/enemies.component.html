@@ -1,0 +1,14 @@
+<div class="cards flex-center">
+  <div
+    class="tile image-container"
+    *ngFor="let enemy of enemies"
+    (click)="lookup(enemy.name)"
+  >
+    <img
+      class="fit-image weapon-image"
+      [src]="thumb(enemy)"
+      alt=""
+      loading="lazy"
+    />
+  </div>
+</div>

@@ -4,9 +4,10 @@
   }
 }
 
-.materials {
+.enemies {
   gap: 16px;
-  .material {
-    max-width: 50%;
+  justify-content: space-around;
+  .enemy {
+    width: calc((100% / 6) - 8px);
   }
 }

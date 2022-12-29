@@ -57,9 +57,14 @@
     *ngIf="data.monsterlist && data.monsterlist.length"
   >
     <div class="info-card-title pad-32">Enemies</div>
-    <div class="info-card-data pad-32 flex-stretch materials text-center">
-      <div class="flex-column" *ngFor="let enemy of data.monsterlist">
-        <img class="material" [src]="enemyImage(enemy)" alt="" loading="lazy" />
+    <div class="info-card-data pad-32 flex-stretch enemies text-center">
+      <div class="flex-column enemy" *ngFor="let enemy of data.monsterlist">
+        <img
+          class="fit-image"
+          [src]="enemyImage(enemy)"
+          alt=""
+          loading="lazy"
+        />
         <div>{{ enemy }}</div>
       </div>
     </div>
@@ -70,15 +75,16 @@
     *ngIf="data.rewardpreview && data.rewardpreview.length"
   >
     <div class="info-card-title pad-32">Rewards</div>
-    <div class="info-card-data pad-32 flex-stretch materials text-center">
-      <div class="flex-column" *ngFor="let reward of data.rewardpreview">
+    <div class="info-card-data pad-32 flex-stretch rewards text-center">
+      <div class="flex-column reward" *ngFor="let reward of data.rewardpreview">
         <img
-          class="material"
+          class="fit-image"
           [src]="materialImage(reward.name)"
           alt=""
           loading="lazy"
         />
         <div>{{ reward.name }}</div>
+        <div *ngIf="reward.rarity">{{ starRank(reward.rarity) }}</div>
       </div>
     </div>
   </div>

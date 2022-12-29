@@ -43,6 +43,18 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'enemies',
+    loadChildren: () =>
+      import('./modules/enemies/enemies.module').then((m) => m.EnemiesModule),
+  },
+  {
+    path: 'enemy/:name',
+    loadChildren: () =>
+      import('./modules/enemy-details/enemy-details.module').then(
+        (m) => m.EnemyDetailsModule
+      ),
+  },
+  {
     path: 'weapons',
     loadChildren: () =>
       import('./modules/weapons/weapons.module').then((m) => m.WeaponsModule),
