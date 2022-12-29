@@ -55,6 +55,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'geographies',
+    loadChildren: () =>
+      import('./modules/geographies/geographies.module').then(
+        (m) => m.GeographiesModule
+      ),
+  },
+  {
     path: 'weapons',
     loadChildren: () =>
       import('./modules/weapons/weapons.module').then((m) => m.WeaponsModule),

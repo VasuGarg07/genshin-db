@@ -1,0 +1,17 @@
+<div class="cards flex-center">
+  <div *ngFor="let area of areas" class="card info-card expand">
+    <div class="info-card-title pad-32">{{ area.name }}</div>
+    <div class="info-card-data pad-32 flex">
+      <div class="flex-3">
+        <ul>
+          <li>Area: {{ area.area }}</li>
+          <li>Region: {{ area.region }}</li>
+          <li>Description: {{ area.description }}</li>
+        </ul>
+      </div>
+      <div class="flex-1 image-container">
+        <img class="fit-image" [src]="thumb(area)" alt="" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</div>

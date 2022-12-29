@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as genshindb from 'genshin-db';
-import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -177,26 +176,16 @@ export class GenshinService {
   }
 
   getGameAreas() {
-    return this.http
-      .get(
-        'https://genshin-db-api.vercel.app/api/geographies?query=names&matchCategories=true&verboseCategories=true'
-      )
-      .pipe(
-        map((res) => {
-          return res;
-        })
-      );
+    return genshindb.geographies('names', {
+      matchCategories: true,
+      verboseCategories: true,
+    });
   }
 
   filterGameAreas(name: string) {
-    return this.http
-      .get(
-        `https://genshin-db-api.vercel.app/api/geographies?query=${name}&matchCategories=true&verboseCategories=true`
-      )
-      .pipe(
-        map((res) => {
-          return res;
-        })
-      );
+    return genshindb.geographies(name, {
+      matchCategories: true,
+      verboseCategories: true,
+    });
   }
 }

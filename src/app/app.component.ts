@@ -10,7 +10,14 @@ export class AppComponent {
   title = 'genshin-db';
   time!: string;
 
-  routes = ['characters', 'weapons', 'artifacts', 'domains', 'enemies'];
+  routes = [
+    'characters',
+    'weapons',
+    'artifacts',
+    'domains',
+    'enemies',
+    'geographies',
+  ];
 
   constructor(private router: Router) {
     setInterval(() => {
