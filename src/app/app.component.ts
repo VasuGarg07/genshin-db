@@ -17,7 +17,9 @@ export class AppComponent {
     'domains',
     'enemies',
     'Foods',
+    'materials',
     'geographies',
+    // 'ranks',
   ];
 
   constructor(private router: Router) {

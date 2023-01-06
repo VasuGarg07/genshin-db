@@ -74,6 +74,27 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'materials',
+    loadChildren: () =>
+      import('./modules/materials/materials.module').then(
+        (m) => m.MaterialsModule
+      ),
+  },
+  {
+    path: 'material/:name',
+    loadChildren: () =>
+      import('./modules/material-details/material-details.module').then(
+        (m) => m.MaterialDetailsModule
+      ),
+  },
+  {
+    path: 'ranks',
+    loadChildren: () =>
+      import('./modules/adventure-ranks/adventure-ranks.module').then(
+        (m) => m.AdventureRanksModule
+      ),
+  },
+  {
     path: 'weapons',
     loadChildren: () =>
       import('./modules/weapons/weapons.module').then((m) => m.WeaponsModule),

@@ -7,9 +7,9 @@
         <li>Entrance: {{ data.domainentrance }}</li>
         <li *ngIf="data.daysofweek">
           Available on:
-          <span *ngFor="let day of data.daysofweek">
-            {{ day | uppercase | slice : 0 : 3 }}
-          </span>
+          <ul>
+            <li *ngFor="let day of data.daysofweek">{{ day }}</li>
+          </ul>
         </li>
         <li>Region: {{ data.region }}</li>
         <li>Unlocked at Level: {{ data.unlockrank }}</li>

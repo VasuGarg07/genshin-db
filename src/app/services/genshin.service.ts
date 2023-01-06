@@ -128,10 +128,6 @@ export class GenshinService {
     return genshindb.talentmaterialtypes(name);
   }
 
-  getMaterial(name: string) {
-    return genshindb.materials(name);
-  }
-
   getAllDoamins() {
     return genshindb.domains('names', {
       matchCategories: true,
@@ -205,5 +201,30 @@ export class GenshinService {
 
   getFood(name: string) {
     return genshindb.foods(name);
+  }
+
+  getAllMaterial() {
+    return genshindb.materials('names', {
+      matchCategories: true,
+      verboseCategories: true,
+    });
+  }
+
+  filterMaterial(name: string) {
+    return genshindb.materials(name, {
+      matchCategories: true,
+      verboseCategories: true,
+    });
+  }
+
+  getMaterial(name: string) {
+    return genshindb.materials(name);
+  }
+
+  getRanks() {
+    return genshindb.adventureranks('names', {
+      matchCategories: true,
+      verboseCategories: true,
+    });
   }
 }

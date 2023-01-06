@@ -27,7 +27,7 @@ export class FoodDetailsComponent implements OnInit {
       this.data = data;
       // this.color = Utils.rarityColor(this.data.rarity);
       console.log(data);
-    } else this.router.navigate(['/weapons']);
+    } else this.router.navigate(['/foods']);
   }
 
   starRank(el: string) {

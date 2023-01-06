@@ -1,0 +1,12 @@
+.chart-flex {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  .cost-item {
+    width: calc((100% / 7) - 2px);
+    border: 1px solid;
+    .material {
+      max-width: 64%;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<div class="cards flex-center">
+  <div
+    class="tile artifact image-container"
+    *ngFor="let material of materials"
+    [style.backgroundImage]="background(material.rarity || '3')"
+    (click)="lookup(material.name)"
+  >
+    <img
+      class="fit-image weapon-image"
+      [src]="thumb(material)"
+      alt=""
+      loading="lazy"
+    />
+  </div>
+</div>
