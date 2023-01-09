@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Domain, Enemy, Material } from 'genshin-db';
+import { Domain, Enemy } from 'genshin-db';
 import { Utils } from 'src/app/helpers/utilties';
 import { GenshinService } from 'src/app/services/genshin.service';
 
@@ -56,5 +56,9 @@ export class DomainDetailComponent implements OnInit {
 
   starRank(el: string) {
     return '★'.repeat(parseInt(el));
+  }
+
+  viewEnemy(item: string) {
+    this.router.navigate(['/enemy', item]);
   }
 }

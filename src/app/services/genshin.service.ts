@@ -92,13 +92,6 @@ export class GenshinService {
     return genshindb.talents(name);
   }
 
-  getAllWeaponMaterials() {
-    return genshindb.weaponmaterialtypes('names', {
-      matchCategories: true,
-      verboseCategories: true,
-    });
-  }
-
   filterWeaponMaterial(name: string) {
     return genshindb.weaponmaterialtypes(name, {
       matchCategories: true,
@@ -108,13 +101,6 @@ export class GenshinService {
 
   getWeaponMaterial(name: string) {
     return genshindb.weaponmaterialtypes(name);
-  }
-
-  getAllTalentMaterials() {
-    return genshindb.talentmaterialtypes('names', {
-      matchCategories: true,
-      verboseCategories: true,
-    });
   }
 
   filterTalentMaterial(name: string) {
@@ -226,5 +212,10 @@ export class GenshinService {
       matchCategories: true,
       verboseCategories: true,
     });
+  }
+
+  // DashboardOnly
+  charsByTalentMaterial(name: string) {
+    return genshindb.talents(name, { matchCategories: true });
   }
 }

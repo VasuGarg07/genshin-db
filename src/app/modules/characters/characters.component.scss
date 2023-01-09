@@ -1,4 +1,5 @@
 .card {
+  width: calc(33% - 12px);
   flex-direction: column;
   // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   font-family: "Expletus Sans", cursive;

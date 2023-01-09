@@ -1,0 +1,90 @@
+<div class="cards flex-center">
+  <div class="card info-card expand">
+    <div class="info-card-title pad-32">Birthdays | {{ month }}</div>
+    <div class="info-card-data pad-32 flex-center birthdays">
+      <div
+        class="tile cursor artifact image-container"
+        *ngFor="let char of birthdays"
+        [style.backgroundImage]="background(char.rarity)"
+        (click)="viewChar(char.name)"
+      >
+        <img
+          class="fit-image weapon-image"
+          [src]="thumb(char)"
+          alt=""
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="card info-card expand">
+    <div class="info-card-title pad-32">Talent Material | {{ day }}</div>
+    <div class="info-card-data pad-32">
+      <div class="flex custom-row" *ngFor="let material of talentMaterials">
+        <div
+          class="tile cursor artifact image-container"
+          [style.backgroundImage]="background('2')"
+          (click)="viewDomain(material.domainofmastery)"
+        >
+          <img
+            class="fit-image weapon-image"
+            [src]="materialImage(material['2starname'])"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <div class="flex-center items">
+          <div
+            class="tile cursor artifact image-container"
+            *ngFor="let char of talentChars[material.name]"
+            [style.backgroundImage]="background(char.rarity)"
+            (click)="viewChar(char.name)"
+          >
+            <img
+              class="fit-image weapon-image"
+              [src]="thumb(char)"
+              alt=""
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card info-card expand">
+    <div class="info-card-title pad-32">Weapon Material | {{ day }}</div>
+    <div class="info-card-data pad-32">
+      <div class="flex custom-row" *ngFor="let material of weaponMaterials">
+        <div
+          class="tile cursor artifact image-container"
+          [style.backgroundImage]="background('2')"
+          (click)="viewDomain(material.domainofforgery)"
+        >
+          <img
+            class="fit-image weapon-image"
+            [src]="materialImage(material['2starname'])"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+        <div class="flex-center items">
+          <div
+            class="tile cursor artifact image-container"
+            *ngFor="let weapon of weapons[material.name]"
+            [style.backgroundImage]="background(weapon.rarity)"
+            (click)="viewWeapon(weapon.name)"
+          >
+            <img
+              class="fit-image weapon-image"
+              [src]="thumb(weapon)"
+              alt=""
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

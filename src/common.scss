@@ -77,3 +77,8 @@ adjust-image {
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.cursor:hover,
+.cursor:active {
+  cursor: pointer;
+}

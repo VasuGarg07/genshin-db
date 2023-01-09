@@ -72,7 +72,11 @@
           <img class="material" [src]="image(data.images.nameicon)" alt="" />
           <div>Ascension {{ entry[0] | slice : 6 }}</div>
         </div>
-        <div class="cost-item" *ngFor="let material of entry[1]">
+        <div
+          class="cost-item cursor"
+          (click)="viewMaterial(material.name)"
+          *ngFor="let material of entry[1]"
+        >
           <img class="material" [src]="materialImage(material.name)" alt="" />
           <div>{{ material.count }}</div>
         </div>

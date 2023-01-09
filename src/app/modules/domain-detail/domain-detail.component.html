@@ -58,7 +58,11 @@
   >
     <div class="info-card-title pad-32">Enemies</div>
     <div class="info-card-data pad-32 flex-stretch enemies text-center">
-      <div class="flex-column enemy" *ngFor="let enemy of data.monsterlist">
+      <div
+        class="flex-column enemy cursor"
+        (click)="viewEnemy(enemy)"
+        *ngFor="let enemy of data.monsterlist"
+      >
         <img
           class="fit-image"
           [src]="enemyImage(enemy)"

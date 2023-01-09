@@ -29,3 +29,9 @@ export enum AssetFolders {
   VISION = 'vision',
   WEAPON = 'weapons',
 }
+
+export enum DomainType {
+  ARTIFACT = 'Artifacts',
+  WEAPON = 'Weapon Ascension Materials',
+  TALENT = 'Talent Level-Up Material',
+}

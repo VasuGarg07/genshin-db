@@ -1,6 +1,6 @@
 <div class="cards flex-center">
   <div
-    class="tile artifact image-container"
+    class="tile artifact image-container cursor"
     *ngFor="let weapon of weapons"
     [style.backgroundImage]="background(weapon.rarity)"
     (click)="lookWeapon(weapon.name)"

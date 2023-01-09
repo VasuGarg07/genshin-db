@@ -1,6 +1,6 @@
 <div class="cards flex-center">
   <div
-    class="tile artifact image-container"
+    class="tile artifact cursor image-container"
     *ngFor="let food of foods"
     [style.backgroundImage]="background(food.rarity)"
     (click)="lookup(food.name)"

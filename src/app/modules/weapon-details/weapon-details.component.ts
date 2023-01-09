@@ -94,4 +94,8 @@ export class WeaponDetailsComponent implements OnInit {
   iterableObject(obj: any): [string, Items[]][] {
     return Object.entries(obj);
   }
+
+  viewMaterial(item: string) {
+    this.router.navigate(['/material', item]);
+  }
 }

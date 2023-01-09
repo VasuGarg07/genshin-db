@@ -77,4 +77,8 @@ export class CharacterDetailsComponent implements OnInit {
   starRank(el: string) {
     return '★'.repeat(parseInt(el));
   }
+
+  viewMaterial(item: string) {
+    this.router.navigate(['/material', item]);
+  }
 }
