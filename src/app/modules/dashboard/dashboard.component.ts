@@ -78,10 +78,6 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/weapon', name]);
   }
 
-  viewDomain(name: string) {
-    this.router.navigate(['/domain', name]);
-  }
-
   background(rarity: '1' | '2' | '3' | '4' | '5') {
     const img = Utils.rarityBg(rarity);
     return `url('${img}')`;

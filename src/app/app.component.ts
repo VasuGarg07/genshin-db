@@ -20,6 +20,7 @@ export class AppComponent {
     'materials',
     'geographies',
     // 'ranks',
+    'windgliders',
   ];
 
   constructor(private router: Router) {

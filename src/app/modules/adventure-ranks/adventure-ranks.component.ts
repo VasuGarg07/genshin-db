@@ -13,7 +13,7 @@ export class AdventureRanksComponent implements OnInit {
   constructor(private genshin: GenshinService) {}
 
   ngOnInit(): void {
-    this.ranks = this.genshin.getRanks();
+    this.ranks = this.genshin.advRanks();
     this.rankIcon = this.genshin.imageUrl('UI_ItemIcon_102');
     console.log(this.ranks);
   }

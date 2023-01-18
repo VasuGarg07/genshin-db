@@ -1,0 +1,19 @@
+<div class="cards flex-center">
+  <div *ngFor="let glider of gliders" class="card info-card expand">
+    <div class="info-card-title pad-32">{{ glider.name }}</div>
+    <div class="info-card-data pad-32 flex">
+      <div class="flex-3 text-justify">
+        <ul>
+          <li>Rarity: {{ glider.rarity }} {{ starRank(glider.rarity) }}</li>
+          <li>Source: {{ glider.source[0] }}</li>
+          <li>Description: {{ glider.description }}</li>
+          <br />
+          <li>Story: {{ glider.story }}</li>
+        </ul>
+      </div>
+      <div class="flex-1 image-container">
+        <img class="fit-image" [src]="thumb(glider)" alt="" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</div>

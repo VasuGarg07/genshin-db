@@ -107,6 +107,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'windgliders',
+    loadChildren: () =>
+      import('./modules/windgliders/windgliders.module').then(
+        (m) => m.WindglidersModule
+      ),
+  },
+  {
     path: 'dashboard',
     loadChildren: () =>
       import('./modules/dashboard/dashboard.module').then(

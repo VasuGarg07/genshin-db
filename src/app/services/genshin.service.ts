@@ -207,8 +207,15 @@ export class GenshinService {
     return genshindb.materials(name);
   }
 
-  getRanks() {
+  advRanks() {
     return genshindb.adventureranks('names', {
+      matchCategories: true,
+      verboseCategories: true,
+    });
+  }
+
+  windGliders() {
+    return genshindb.windgliders('names', {
       matchCategories: true,
       verboseCategories: true,
     });
