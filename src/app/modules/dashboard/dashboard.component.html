@@ -28,7 +28,7 @@
         >
           <img
             class="fit-image weapon-image"
-            [src]="materialImage(material['2starname'])"
+            [src]="materialImage(material)"
             alt=""
             loading="lazy"
           />
@@ -36,7 +36,7 @@
         <div class="flex-center items">
           <div
             class="tile cursor artifact image-container"
-            *ngFor="let char of talentChars[material.name]"
+            *ngFor="let char of characters[material.name]"
             [style.backgroundImage]="background(char.rarity)"
             (click)="viewChar(char.name)"
           >
@@ -62,7 +62,7 @@
         >
           <img
             class="fit-image weapon-image"
-            [src]="materialImage(material['2starname'])"
+            [src]="materialImage(material)"
             alt=""
             loading="lazy"
           />

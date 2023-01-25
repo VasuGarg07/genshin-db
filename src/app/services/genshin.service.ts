@@ -222,6 +222,7 @@ export class GenshinService {
   }
 
   // DashboardOnly
+
   charsByTalentMaterial(name: string) {
     return genshindb.talents(name, { matchCategories: true });
   }

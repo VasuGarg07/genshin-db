@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Enemy } from 'genshin-db';
-import { Utils } from 'src/app/helpers/utilties';
 import { GenshinService } from 'src/app/services/genshin.service';
 
 @Component({
