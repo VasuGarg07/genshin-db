@@ -1,5 +1,5 @@
 <div class="character-splash">
-  <div class="title pad-32 text-end" [style.color]="color">
+  <div class="title padding text-end" [style.color]="color">
     {{ character.name | uppercase }}
   </div>
   <div class="image-container">
@@ -11,10 +11,10 @@
   </div>
 </div>
 
-<div class="cards flex-center">
+<div class="cards padding padding flex-center">
   <div class="card info-card">
-    <div class="info-card-title pad-32">Character</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">Character</div>
+    <div class="info-card-data padding">
       <ul>
         <li>Title: {{ character.title }}</li>
         <li>
@@ -65,8 +65,8 @@
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Information</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">Information</div>
+    <div class="info-card-data padding">
       <ul>
         <li>
           Gender: {{ character.gender }}
@@ -84,13 +84,13 @@
   </div>
 
   <div class="card info-card expand">
-    <div class="info-card-title pad-32">Description</div>
-    <div class="info-card-data pad-32">{{ character.description }}</div>
+    <div class="info-card-title">Description</div>
+    <div class="info-card-data padding">{{ character.description }}</div>
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">{{ character.constellation }}</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">{{ character.constellation }}</div>
+    <div class="info-card-data padding">
       <div class="card-skill flex">
         <div class="image-container">
           <img [src]="constellation.images.c1" alt="" />
@@ -166,15 +166,15 @@
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Portrait</div>
+    <div class="info-card-title">Portrait</div>
     <div class="info-card-data image-container">
       <img class="fit-image" [src]="character.images.cover2!" alt="" />
     </div>
   </div>
 
   <div class="card info-card expand">
-    <div class="info-card-title pad-32">Combat Skills</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">Combat Skills</div>
+    <div class="info-card-data padding">
       <div class="card-skill flex">
         <div class="image-container">
           <img [src]="image(talent.images!.combat1)" alt="" />
@@ -237,8 +237,8 @@
   </div>
 
   <div class="card info-card expand">
-    <div class="info-card-title pad-32">Passive Skills</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">Passive Skills</div>
+    <div class="info-card-data padding">
       <div class="card-skill flex">
         <div class="image-container">
           <img [src]="image(talent.images!.passive1)" alt="" />
@@ -278,8 +278,8 @@
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Talent Cost</div>
-    <div class="info-card-data pad-32 text-center">
+    <div class="info-card-title">Talent Cost</div>
+    <div class="info-card-data padding text-center">
       <div
         class="chart-flex"
         *ngFor="let entry of iterableObject(talent.costs)"
@@ -305,8 +305,8 @@
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Ascension Cost</div>
-    <div class="info-card-data pad-32 text-center">
+    <div class="info-card-title">Ascension Cost</div>
+    <div class="info-card-data padding text-center">
       <div
         *ngFor="let entry of iterableObject(character.costs)"
         class="chart-flex"
@@ -332,12 +332,12 @@
   </div>
 
   <div class="card info-card expand">
-    <div class="info-card-title pad-32">Character Stats</div>
+    <div class="info-card-title">Character Stats</div>
     <div class="info-card-data flex">
       <div class="flex-1 image-container">
         <img class="fit-image" [src]="character.images.cover1!" alt="" />
       </div>
-      <div class="flex-1 pad-16 text-center">
+      <div class="flex-1 stats-value text-center">
         <div class="flex">
           <div class="stat-value">Level</div>
           <div class="stat-value">Ascension</div>

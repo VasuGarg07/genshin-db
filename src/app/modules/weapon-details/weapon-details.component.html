@@ -1,5 +1,5 @@
 <div class="splash flex">
-  <div class="flex-3 pad-32">
+  <div class="flex-3 padding">
     <div class="title" [style.color]="color">{{ data.name }}</div>
     <img [src]="rarity(data.rarity)" alt="" />
   </div>
@@ -8,10 +8,10 @@
   </div>
 </div>
 
-<div class="cards flex-center">
+<div class="cards padding flex-center">
   <div class="card info-card">
-    <div class="info-card-title pad-32">Weapon</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">Weapon</div>
+    <div class="info-card-data padding">
       <ul>
         <li>Base Attack: {{ data.baseatk }}</li>
         <li>
@@ -50,23 +50,23 @@
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Description</div>
-    <div class="info-card-data pad-32">{{ data.description }}</div>
+    <div class="info-card-title">Description</div>
+    <div class="info-card-data padding">{{ data.description }}</div>
   </div>
 
   <div class="card info-card expand">
-    <div class="info-card-title pad-32">Story</div>
-    <div class="info-card-data pad-32">{{ data.story }}</div>
+    <div class="info-card-title">Story</div>
+    <div class="info-card-data padding">{{ data.story }}</div>
   </div>
 
   <div class="card info-card expand">
-    <div class="info-card-title pad-32">{{ data.effectname }}</div>
-    <div class="info-card-data pad-32" [innerHTML]="setEffectValue()"></div>
+    <div class="info-card-title">{{ data.effectname }}</div>
+    <div class="info-card-data padding" [innerHTML]="setEffectValue()"></div>
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Ascension Cost</div>
-    <div class="info-card-data pad-32 text-center">
+    <div class="info-card-title">Ascension Cost</div>
+    <div class="info-card-data padding text-center">
       <div *ngFor="let entry of iterableObject(data.costs)" class="chart-flex">
         <div class="cost-item">
           <img class="material" [src]="image(data.images.nameicon)" alt="" />
@@ -85,8 +85,8 @@
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Weapon Stats</div>
-    <div class="info-card-data pad-32 text-center">
+    <div class="info-card-title">Weapon Stats</div>
+    <div class="info-card-data padding text-center">
       <div class="flex">
         <div class="stat-value">Level</div>
         <div class="stat-value">Ascension</div>

@@ -1,28 +1,7 @@
-@use "@angular/material" as mat;
-@include mat.core();
-// Available color palettes: https://material.io/design/color/
-$genshin-db-primary: mat.define-palette(mat.$indigo-palette);
-$genshin-db-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$genshin-db-warn: mat.define-palette(mat.$red-palette);
-
-$genshin-db-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $genshin-db-primary,
-      accent: $genshin-db-accent,
-      warn: $genshin-db-warn,
-    ),
-  )
-);
-
-@include mat.all-component-themes($genshin-db-theme);
-
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Expletus+Sans&display=swap");
-@import url("utilities.scss");
-@import url("common.scss");
+@import "./app/styles/theme.scss";
+@import "./app/styles/utilities.scss";
+@import "./app/styles/common.scss";
 html,
 body {
   height: 100%;

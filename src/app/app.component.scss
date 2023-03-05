@@ -1,47 +1,43 @@
-.main-container {
-  width: 100vw;
+.container {
   min-height: 100vh;
   background: linear-gradient(rgb(0 0 0 / 30%), rgb(0 0 0 /30%)),
     url("/assets/background_2.jpg") no-repeat center;
   background-size: cover;
   background-attachment: fixed;
-  overflow: hidden;
-  .top-nav {
-    height: 10vh;
-    background-color: rgb(0 0 0 / 60%);
-    padding: 0 24px;
-    .logo,
-    .time {
-      width: 10%;
-      padding: 8px;
-      text-align: center;
-      font-size: 24px;
-    }
-    .time {
-      background-color: #ffffff3a;
+  .nav {
+    height: 4rem;
+    background-color: rgb(0 0 0 / 40%);
+    backdrop-filter: blur(2px);
+    color: #fff;
+    .logo {
+      width: 120px;
+      line-height: 0;
     }
   }
-  .flex-container {
-    display: flex;
-    align-items: stretch;
-    .side-nav {
-      background: rgb(0 0 0 / 20%);
-      padding: 16px;
-      min-height: 90vh;
-      .nav-item {
-        padding: 16px;
-        font-size: 16px;
-        width: 8vw;
-        margin: 2px;
-        &:hover {
-          background: rgb(255 255 255 / 20%);
-          cursor: pointer;
-        }
-      }
+
+  mat-sidenav-container {
+    background: transparent;
+    color: inherit;
+    mat-sidenav {
+      background-color: rgb(32, 32, 32);
+      position: fixed;
+      margin-top: 4rem;
+      width: 240px;
     }
-    .content-container {
-      overflow-x: hidden;
-      overflow-y: auto;
+    mat-sidenav-content {
+      height: calc(100vh - 4rem);
+    }
+  }
+  .menu {
+    text-transform: uppercase;
+    text-align: center;
+    padding: 16px;
+    font-family: "Montserrat", cursive;
+    &:hover {
+      background-color: rgb(48, 48, 48);
+      border-left: 4px solid rgba(33, 181, 250, 0.893);
+      color: rgb(241, 252, 29);
+      cursor: pointer;
     }
   }
 }

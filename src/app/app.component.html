@@ -1,23 +1,34 @@
-<div class="main-container">
-  <div class="top-nav flex">
-    <div class="logo cursor" routerLink="/">
+<div class="container full-width">
+  <mat-toolbar class="nav flex-justify">
+    <button mat-icon-button (click)="back()">
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+    <div class="logo cursor" (click)="drawer.close()" routerLink="/">
       <img class="fit-image" src="/assets/logo.png" alt="" />
     </div>
-    <span class="spacer"></span>
-    <div class="time">{{ time }}</div>
-  </div>
-  <div class="flex-container">
-    <div class="side-nav">
+    <div class="flex-center">
+      <button mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container [hasBackdrop]="isMobile">
+    <mat-sidenav #drawer position="start" [mode]="isMobile ? 'over' : 'side'">
       <div
-        class="nav-item"
+        class="menu"
         *ngFor="let route of routes"
-        (click)="navigate(route)"
+        (click)="navigate(route); drawer.close()"
       >
         {{ route | titlecase }}
       </div>
-    </div>
-    <div class="content-container spacer">
+    </mat-sidenav>
+
+    <mat-sidenav-content>
       <router-outlet></router-outlet>
-    </div>
-  </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

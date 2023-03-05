@@ -1,4 +1,4 @@
-<div class="cards flex-center">
+<div class="cards padding padding flex-center">
   <div
     class="card"
     *ngFor="let domain of domains"
@@ -12,7 +12,7 @@
         loading="lazy"
       />
     </div>
-    <div class="card-name pad-16 text-center">
+    <div class="card-name text-center">
       {{ domain.name | uppercase }}
     </div>
   </div>

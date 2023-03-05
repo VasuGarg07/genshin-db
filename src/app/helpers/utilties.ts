@@ -1,6 +1,15 @@
 import { AssetFolders, RarityColor, VisionColor } from './enums';
 
 export namespace Utils {
+  export const isMobile = () => {
+    return /Mobi/i.test(window.navigator.userAgent);
+  };
+  export function delay(timeInMs: number): Promise<void> {
+    return new Promise((resolve, _) => {
+      setTimeout(() => resolve(), timeInMs);
+    });
+  }
+
   export function returnArray(data: any | any[]): any[] {
     return Array.isArray(data) ? data : [data];
   }

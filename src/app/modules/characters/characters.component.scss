@@ -4,12 +4,13 @@
   // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   font-family: "Expletus Sans", cursive;
   .card-info {
-    width: calc(100% - 64px);
+    width: calc(100% - 32px);
     .card-name {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: bold;
       letter-spacing: 2px;
       line-height: 1;
+      flex-wrap: wrap;
       .icon-margin {
         margin: 0 4px;
       }
@@ -19,5 +20,17 @@
     cursor: pointer;
     background-color: rgb(0 0 0 / 0.16);
     backdrop-filter: blur(2px);
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .card {
+    width: calc(50% - 16px);
+  }
+}
+
+@media screen and (max-width: 499px) {
+  .card {
+    width: 100%;
   }
 }

@@ -34,8 +34,10 @@
       }
     }
   }
-
-  .stat-value {
-    width: calc(100% / 6);
+  .stats-table {
+    padding: 16px;
+    .stat-value {
+      width: calc(100% / 6);
+    }
   }
 }

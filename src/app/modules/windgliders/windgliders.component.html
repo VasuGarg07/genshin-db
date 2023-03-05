@@ -1,7 +1,7 @@
-<div class="cards flex-center">
+<div class="cards padding flex-center">
   <div *ngFor="let glider of gliders" class="card info-card expand">
-    <div class="info-card-title pad-32">{{ glider.name }}</div>
-    <div class="info-card-data pad-32 flex">
+    <div class="info-card-title">{{ glider.name }}</div>
+    <div class="info-card-data flex">
       <div class="flex-3 text-justify">
         <ul>
           <li>Rarity: {{ glider.rarity }} {{ starRank(glider.rarity) }}</li>

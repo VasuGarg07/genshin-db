@@ -1,5 +1,5 @@
 .birthdays {
-  gap: 32px;
+  gap: 16px;
 }
 
 .custom-row {
@@ -9,15 +9,15 @@
 
   .items {
     flex: 1;
-    gap: 32px;
+    gap: 16px;
     flex-wrap: wrap;
   }
   &:not(:last-child) {
     border-bottom: 1px solid white;
-    padding-bottom: 32px;
+    padding-bottom: 16px;
   }
 
   &:not(:first-child) {
-    padding-top: 32px;
+    padding-top: 16px;
   }
 }

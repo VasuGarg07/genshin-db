@@ -1,6 +1,6 @@
-<div class="cards flex-center">
+<div class="cards padding flex-center">
   <div class="card info-card expand">
-    <div class="info-card-title pad-32">{{ data.name }}</div>
+    <div class="info-card-title">{{ data.name }}</div>
     <div class="info-card-data flex-justify">
       <div class="image-container">
         <img class="fit-image" [src]="image(data.images.nameflower!)" alt="" />
@@ -21,8 +21,8 @@
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Set Information</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">Set Information</div>
+    <div class="info-card-data padding">
       <ul>
         <li>
           Highest Star Rank:
@@ -39,8 +39,8 @@
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Set Pieces</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">Set Pieces</div>
+    <div class="info-card-data padding">
       <ul>
         <li>{{ data.flower!.relictype }}: {{ data.flower!.name }}</li>
         <li>{{ data.plume!.relictype }}: {{ data.plume!.name }}</li>
@@ -52,8 +52,8 @@
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Description</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">Description</div>
+    <div class="info-card-data padding">
       <div class="flex-center image-container">
         <img
           class="ajust-image"
@@ -70,13 +70,13 @@
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Story</div>
-    <div class="info-card-data pad-32" [innerHTML]="data.flower!.story"></div>
+    <div class="info-card-title">Story</div>
+    <div class="info-card-data padding" [innerHTML]="data.flower!.story"></div>
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Description</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">Description</div>
+    <div class="info-card-data padding">
       <div class="flex-center image-container">
         <img class="ajust-image" [src]="image(data.images.nameplume!)" alt="" />
       </div>
@@ -89,13 +89,13 @@
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Story</div>
-    <div class="info-card-data pad-32" [innerHTML]="data.plume!.story"></div>
+    <div class="info-card-title">Story</div>
+    <div class="info-card-data padding" [innerHTML]="data.plume!.story"></div>
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Description</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">Description</div>
+    <div class="info-card-data padding">
       <div class="flex-center image-container">
         <img class="ajust-image" [src]="image(data.images.namesands!)" alt="" />
       </div>
@@ -108,13 +108,13 @@
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Story</div>
-    <div class="info-card-data pad-32" [innerHTML]="data.sands!.story"></div>
+    <div class="info-card-title">Story</div>
+    <div class="info-card-data padding" [innerHTML]="data.sands!.story"></div>
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Description</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">Description</div>
+    <div class="info-card-data padding">
       <div class="flex-center image-container">
         <img
           class="ajust-image"
@@ -131,13 +131,13 @@
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Story</div>
-    <div class="info-card-data pad-32" [innerHTML]="data.goblet!.story"></div>
+    <div class="info-card-title">Story</div>
+    <div class="info-card-data padding" [innerHTML]="data.goblet!.story"></div>
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Description</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">Description</div>
+    <div class="info-card-data padding">
       <div class="flex-center image-container">
         <img
           class="ajust-image"
@@ -154,7 +154,7 @@
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Story</div>
-    <div class="info-card-data pad-32" [innerHTML]="data.circlet.story"></div>
+    <div class="info-card-title">Story</div>
+    <div class="info-card-data padding" [innerHTML]="data.circlet.story"></div>
   </div>
 </div>

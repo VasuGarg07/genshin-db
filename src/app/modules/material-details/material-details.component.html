@@ -1,7 +1,7 @@
-<div class="cards flex-center">
+<div class="cards padding flex-center">
   <div class="card info-card expand">
-    <div class="info-card-title pad-32">{{ data.name }}</div>
-    <div class="info-card-data pad-32 flex">
+    <div class="info-card-title">{{ data.name }}</div>
+    <div class="info-card-data padding flex">
       <div class="flex-2">
         <ul>
           <li>Category: {{ data.category | titlecase }}</li>
@@ -31,7 +31,7 @@
   </div>
 
   <div class="card info-card expand">
-    <div class="info-card-title pad-32">Description</div>
-    <div class="info-card-data pad-32">{{ data.description }}</div>
+    <div class="info-card-title">Description</div>
+    <div class="info-card-data padding">{{ data.description }}</div>
   </div>
 </div>

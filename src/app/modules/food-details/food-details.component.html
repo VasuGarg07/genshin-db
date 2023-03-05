@@ -1,7 +1,7 @@
-<div class="cards flex-center">
+<div class="cards padding padding flex-center">
   <div class="card info-card expand">
-    <div class="info-card-title pad-32">{{ data.name }}</div>
-    <div class="info-card-data pad-32 flex">
+    <div class="info-card-title">{{ data.name }}</div>
+    <div class="info-card-data padding flex">
       <div class="flex-2">
         <ul>
           <li>Quality: {{ data.rarity }} {{ starRank(data.rarity) }}</li>
@@ -17,13 +17,13 @@
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Description</div>
-    <div class="info-card-data pad-32">{{ data.description }}</div>
+    <div class="info-card-title">Description</div>
+    <div class="info-card-data padding">{{ data.description }}</div>
   </div>
 
   <div class="card info-card">
-    <div class="info-card-title pad-32">Effects</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">Effects</div>
+    <div class="info-card-data padding">
       <ul>
         <li *ngIf="data.normal">Normal: {{ data.normal.effect }}</li>
         <li *ngIf="data.delicious">Delicious: {{ data.delicious.effect }}</li>
@@ -35,8 +35,8 @@
   </div>
 
   <div class="card info-card expand">
-    <div class="info-card-title pad-32">Ingredients</div>
-    <div class="info-card-data pad-32 flex-stretch rewards text-center">
+    <div class="info-card-title">Ingredients</div>
+    <div class="info-card-data padding flex-stretch rewards text-center">
       <div
         class="flex-column reward"
         *ngFor="let ingredient of data.ingredients"

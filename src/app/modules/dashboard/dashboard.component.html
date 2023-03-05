@@ -1,7 +1,7 @@
-<div class="cards flex-center">
+<div class="cards padding flex-center">
   <div class="card info-card expand">
-    <div class="info-card-title pad-32">Birthdays | {{ month }}</div>
-    <div class="info-card-data pad-32 flex-center birthdays">
+    <div class="info-card-title">Birthdays | {{ month }}</div>
+    <div class="info-card-data padding flex-center birthdays">
       <div
         class="tile cursor artifact image-container"
         *ngFor="let char of birthdays"
@@ -19,8 +19,8 @@
   </div>
 
   <div class="card info-card expand">
-    <div class="info-card-title pad-32">Talent Material | {{ day }}</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">Talent Material | {{ day }}</div>
+    <div class="info-card-data padding">
       <div class="flex custom-row" *ngFor="let material of talentMaterials">
         <div
           class="tile cursor artifact image-container"
@@ -53,8 +53,8 @@
   </div>
 
   <div class="card info-card expand">
-    <div class="info-card-title pad-32">Weapon Material | {{ day }}</div>
-    <div class="info-card-data pad-32">
+    <div class="info-card-title">Weapon Material | {{ day }}</div>
+    <div class="info-card-data padding">
       <div class="flex custom-row" *ngFor="let material of weaponMaterials">
         <div
           class="tile cursor artifact image-container"
