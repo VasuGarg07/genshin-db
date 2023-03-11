@@ -18,6 +18,39 @@
   width: calc(50% - 16px);
   background-color: rgb(0 0 0 / 0.2);
   border-radius: 16px;
+  .info-card-title {
+    font-family: "Expletus Sans", cursive;
+    background-color: rgb(0 0 0 / 0.3);
+    font-size: 24px;
+    border-radius: 16px 16px 0 0;
+    line-height: 1;
+    padding: 24px;
+  }
+
+  .info-card-data {
+    font-family: "Nunito", sans-serif;
+    line-height: 1.5;
+  }
+
+  .card-skill {
+    gap: 8px;
+  }
+  .card-skill-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .card-line {
+    border: none;
+    border-bottom: 1px solid;
+  }
+
+  .rewards {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .reward {
+    width: calc(10% - 4px);
+  }
 }
 
 .tile {
@@ -37,42 +70,8 @@
   max-width: 100%;
 }
 
-.info-card-title {
-  font-family: "Expletus Sans", cursive;
-  background-color: rgb(0 0 0 / 0.3);
-  font-size: 24px;
-  border-radius: 16px 16 + px 0 0;
-  line-height: 1;
-  padding: 24px;
-}
-
-.info-card-data {
-  font-family: "Nunito", sans-serif;
-  line-height: 1.5;
-}
-
 .expand {
   width: 100%;
-}
-
-.card-skill {
-  gap: 8px;
-}
-.card-skill-title {
-  font-size: 18px;
-  font-weight: bold;
-}
-.card-line {
-  border: none;
-  border-bottom: 1px solid;
-}
-
-.rewards {
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.reward {
-  width: calc(10% - 4px);
 }
 
 .artifact {
@@ -93,14 +92,19 @@
 }
 
 @media screen and (max-width: 499px) {
-  .info-card-title {
-    padding: 16px;
-    font-size: 20px;
-  }
   .tile {
     width: calc(33.33% - 16px);
   }
   .card {
-    width: calc(100% - 16px);
+    width: 100%;
+    border-radius: 8px;
+    .info-card-title {
+      border-radius: 8px 8px 0 0;
+      padding: 12px;
+      font-size: 16px;
+    }
+    .info-card-data {
+      padding: 12px;
+    }
   }
 }

@@ -17,7 +17,7 @@
   </mat-toolbar>
 
   <mat-sidenav-container [hasBackdrop]="isMobile">
-    <mat-sidenav #drawer position="start" [mode]="isMobile ? 'over' : 'side'">
+    <mat-sidenav #drawer position="start" mode="over">
       <div
         class="menu"
         *ngFor="let route of routes"
